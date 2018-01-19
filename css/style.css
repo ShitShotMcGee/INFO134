@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
+#header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #A81814;
+    height: 15%;
+    width: 100%;
+}
+
+h1 {
+
+    text-align: center;
+    position: absolute;
+    top: 0.5vh;
+    left: 46vw;
+    color: ivory;
+    font-size: 5vh;
+
+}
+
+ul{
+    list-style-type: none;
+
+    color: ivory;
+    font-size: 3vh;
+}
+
+a {
+    text-decoration: none;
+}
+#gjøremål {
+    position: absolute;
+    top: 9vh;
+    left: 1vw;
+}
+
+#kontakt {
+    position: absolute;
+    top: 9vh;
+    left: 7vw;
+}
+
+li:hover {
+    font-size: 4vh;
+    left: auto;
+}
