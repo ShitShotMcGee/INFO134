@@ -33,20 +33,29 @@ ul{
 
 a {
     text-decoration: none;
+    color: ivory;
 }
 #gjøremål {
+    text-decoration: none;
     position: absolute;
     top: 9vh;
     left: 1vw;
 }
 
-#kontakt {
+#kart {
+    text-decoration: none;
     position: absolute;
     top: 9vh;
     left: 7vw;
 }
 
 li:hover {
-    font-size: 4vh;
+    text-decoration: none;
+    font-size: 3.5vh;
     left: auto;
+}
+
+#map {
+    width: 50vw;
+    height: 100%;
 }
