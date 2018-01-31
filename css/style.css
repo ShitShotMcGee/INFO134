@@ -94,4 +94,13 @@ footer {
     position: absolute;
     bottom: 0;
     height: 4vh;
+    width: 100%;
+    text-align: center;
+
+}
+
+footer p {
+    color: ivory;
+    font-size: 1vh;
+    margin-top: 1.5vh;
 }
