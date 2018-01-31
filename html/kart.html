@@ -27,17 +27,34 @@
             <script>
                 function initMap() {
                     var options = {
-                        zoom: 15,
-                        center: {lat: 60.391017 , lng: 5.326045}
-
+                        zoom: 14,
+                        center: {lat: 60.389772, lng: 5.331281}
                     }
                     var map = new
                     google.maps.Map(document.getElementById('map'), options);
 
                     var marker = new google.maps.Marker({
-                        position: {lat: 60.391017, lng: 5.326045},
+                        position: {lat: 60.399756, lng: 5.303464},
                         map: map
                 });
+                    var marker = new google.maps.Marker({
+                        position: {lat: 60.396836, lng: 5.323351},
+                        map: map
+                });
+                    var marker = new google.maps.Marker({
+                        position: {lat: 60.397555, lng: 5.312685},
+                        map: map
+                });
+                    var marker = new google.maps.Marker({
+                        position: {lat: 60.394844, lng: 5.342814},
+                        map: map
+                });
+                    var marker = new google.maps.Marker({
+                        position: {lat: 60.377559, lng: 5.380975},
+                        map: map
+                });
+
+
                 }
             </script>
             <script async defer
@@ -45,5 +62,8 @@
             </script>
     </div>
 
+    <footer>
+        <p>Laget av NEH006 og WIZ005</p>
+    </footer>
 </body>
 </html>
