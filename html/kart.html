@@ -1,21 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bm">
 <head>
     <meta charset="UTF-8">
-    <title>Kontakt</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9yj5IT88RcxkuQ61K-w5QpNthJDi8hb4&callback=initMap"></script>
+    <title>Kart</title>
     <script type="text/javascript" src="../js/js.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <meta name="viewport" content="initial-scale=1.0">
+
+
 </head>
 <body>
-    <header id="header">
-        <h1>Bergen By</h1>
-        <ul>
-            <li id="gjøremål"><a href="../html/gjøremål.html">Gjøremål</a> </li>
-            <li id="kart"> <a href="../html/kart.html">Kart</a></li>
-        </ul>
-    </header>
 
-    <div id="map"></div>
+<header id="header">
+    <h1  >Bergen By</h1>
+
+
+    <ul>
+        <li id=index ><a href="index.html">Startside</a></li>
+        <li id=todo ><a href=" html/gjøremål.html">Gjøremål</a></li>
+        <li id=kart ><a href=" html/kart.html">Kart</a></li>
+
+    </ul>
+
+</header>
+
+
+
+    <div id="map"> </div>
+    <script>
+        function initMap() {
+            var options = {
+                zoom: 15,
+                center: {lat: 60.391017 , lng: 5.326045}
+
+            }
+            var map = new
+            google.maps.Map(document.getElementById('map'), options);
+
+            var marker = new google.maps.Marker({
+                position: {lat: 60.391017, lng: 5.326045},
+                map: map
+        });
+        }
+
+
+
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
+    </script>
+
+
 </body>
 </html>
