@@ -82,6 +82,48 @@ li a:hover {
 
 }
 
+#info {
+    display: flex;
+    flex-direction: column;
+}
+
+#info img {
+    width: 40%;
+    height: auto;
+}
+
+#akvariet_flex {
+    flex-direction: row;
+}
+
+#bryggen_flex{
+    flex-direction: row;
+}
+
+#floyen_flex {
+    flex-direction: row;
+}
+
+#ice_bar_flex {
+    flex-direction: row;
+}
+
+#ulriken_flex {
+    flex-direction: row;
+}
+
+#akvariet_tekst {
+    flex-direction: column;
+
+}
+
+#akvariet_bilde {
+    flex-direction: column;
+
+}
+
+
+
 
 #map {
     height: 85vh;
@@ -91,7 +133,7 @@ li a:hover {
 
 footer {
     background-color: #9A0002;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     height: 4vh;
     width: 100%;

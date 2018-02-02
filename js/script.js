@@ -1,3 +1,4 @@
+//Javascript tilhørende Slideshow. Laget av Wiz005
 var slideIndex = 0;
 showSlides();
 
