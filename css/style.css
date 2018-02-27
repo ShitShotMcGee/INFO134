@@ -82,47 +82,32 @@ li a:hover {
 
 }
 
-#info {
+
+
+.flex-container {
+    padding: inherit;
+    margin: auto;
+    list-style: none;
+
     display: flex;
-    flex-direction: column;
-}
-
-#info img {
-    width: 40%;
-    height: auto;
-}
-
-#akvariet_flex {
-    flex-direction: row;
-}
-
-#bryggen_flex{
-    flex-direction: row;
-}
-
-#floyen_flex {
-    flex-direction: row;
-}
-
-#ice_bar_flex {
-    flex-direction: row;
-}
-
-#ulriken_flex {
-    flex-direction: row;
-}
-
-#akvariet_tekst {
-    flex-direction: column;
 
 }
 
-#akvariet_bilde {
-    flex-direction: column;
+.flex-item2 {
+background: white;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
 
 }
 
 
+.flex-item {
+  background:yellow ;
+
+}
 
 
 #map {
