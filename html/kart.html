@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Kart</title>
     <script type="text/javascript" src="../js/console.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
     <script src="../js/dass.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <meta name="viewport" content="initial-scale=1.0">
@@ -11,30 +12,7 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
-    <script>
-        function initMap() {
-            var options = {
-                zoom: 14,
-                center: {lat: 60.389772, lng: 5.331281}
-            }
-            var map = new
-            google.maps.Map(document.getElementById('map'), options);
 
-            for (var x in dassen) {
-                var bul = dassen[x];
-                var loc = new google.maps.LatLng(bul.latitude,bul.longitude);
-                var marker = new google.maps.Marker({
-                    position: loc ,
-                    title: bul.plassering
-
-                    ,
-                    map: map
-                });
-
-            }
-        }
-
-    </script>
 
 </head>
 

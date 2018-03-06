@@ -15,6 +15,30 @@ function showSlides() {
 }
 
 
+//Javascript til toalett kartet
+
+    function initMap() {
+        var options = {
+            zoom: 14,
+            center: {lat: 60.389772, lng: 5.331281}
+        }
+        var map = new
+        google.maps.Map(document.getElementById('map'), options);
+
+        for (var x in dassen) {
+            var bul = dassen[x];
+            var loc = new google.maps.LatLng(bul.latitude,bul.longitude);
+            var marker = new google.maps.Marker({
+                position: loc ,
+                title: bul.plassering
+
+                ,
+                map: map
+            });
+
+        }
+    }
+
 
 
 
