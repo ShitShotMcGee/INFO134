@@ -19,7 +19,7 @@ function showSlides() {
 
     function initMap() {
         var options = {
-            zoom: 14,
+            zoom: 13,
             center: {lat: 60.389772, lng: 5.331281}
         }
         var map = new
@@ -38,6 +38,8 @@ function showSlides() {
 
         }
     }
+
+
 
 
 
