@@ -1,7 +1,5 @@
-(window.onload = function(){
-document.getElementById('avansert_søk').addEventListener('submit', function(evt) {
-    evt.preventDefault();
 
+/*
 function Sok(herre, dame, rullestol, aapen, stellerom, gratis, klokkeslett, makspris){
     this.herre = herre;
     this.dame = dame;
@@ -23,12 +21,11 @@ function Sok(herre, dame, rullestol, aapen, stellerom, gratis, klokkeslett, maks
     var makspris = document.getElementById.innerHTML(makspris).value;
 
 
-    const checkHerre = document.querySelector('herre');
+    const checkHerre = document.getElementById('herre');
     checkHerre.addEventListener('change', function (e) {
         if(checkHerre.checked){
 
         }
     })
+*/
 
-}
-)})
