@@ -11,19 +11,19 @@
         var rasktsok = document.getElementById("rasktsok").value;
         var result = [];
 
-        for (var i in dassen) {
+        for (var i in toaletter) {
 
-            if (dassen[i].plassering.toLowerCase().indexOf(rasktsok.toLowerCase()) >-1) {
-                result.push(dassen[i]);
+            if (toaletter[i].plassering.toLowerCase().indexOf(rasktsok.toLowerCase()) >-1) {
+                result.push(toaletter[i]);
             }
         }
         visDass(result);
     }
 
-    function visDass(dass){
+    function visDass(toalett){
         var sokList = document.getElementById("sokList");
 
-        if(dass.length<1){
+        if(toalett.length<1){
             var div = document.createElement("div");
             var p = document.createElement("p");
             p.textContent = "Ingen treff på søket ditt";
@@ -31,7 +31,7 @@
             sokList.appendChild(div);
 
         }else{
-            dass.forEach(function (dassen) {
+            toalett.forEach(function (toaletter) {
 
                 var div = document.createElement("div");
                 var p = document.createElement("p");
@@ -39,9 +39,9 @@
                 var latitude = document.createElement("p");
 
 
-                p.textContent = dassen.plassering;
-                longitude.textContent = dassen.longitude;
-                latitude.textContent = dassen.latitude;
+                p.textContent = toaletter.plassering;
+                longitude.textContent = toaletter.longitude;
+                latitude.textContent = toaletter.latitude;
 
 
 

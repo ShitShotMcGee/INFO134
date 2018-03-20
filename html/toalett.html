@@ -5,8 +5,9 @@
     <title>Toaletter</title>
     <script type="text/javascript" src="../js/console.js"></script>
     <script type="text/javascript" src="../js/script.js"></script>
-    <script src="../js/dass.js"></script>
+    <script src="../js/toalett.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/avansertSok1.js"></script>
     <script src="../js/hurtigSøk.js"></script>
 
 
@@ -39,13 +40,14 @@
         </div>
         <div id="avansert_søk">
             <form>
-                <input name="Kjønn" id="kjønn" placeholder="Kjønn"/>
-                <input name="Rullestoltilgang" id="rullestol" placeholder="Rullestoltilgang"/>
-                <input name="Åpen" id="åpen" placeholder="Åpen"/>
+                <input type="checkbox" name="Herre" id="herre" placeholder="herre"/>Herre<br>
+                <input type="checkbox" name="Kjønn" id="kjønn" placeholder="Kjønn"/>Dame<br>
+                <input type="checkbox" name="Rullestoltilgang" id="rullestol" placeholder="Rullestoltilgang"/>Rullestol<br>
+                <input type="checkbox" name="Åpen" id="aapen" placeholder="Åpen"/>Åpen nå<br>
+                <input type="checkbox" name="Stellerom" id="stellerom" placeholder="Stellerom"/>Stellerom<br>
+                <input type="checkbox" name="Gratis" id="gratis" placeholder="Gratis"/>Gratis<br>
                 <input name="Åpen klokkeslett" id="klokkeslett" placeholder="Åpen klokkeslett"/>
-                <input name="Stellerom" id="stellerom" placeholder="Stellerom"/>
                 <input name="Makspris" id="makspris" placeholder="Makspris"/>
-                <input name="Gratis" id="gratis" placeholder="Gratis"/>
                 <input type="button" id="søk" value="Søk"/>
             </form>
         </div>
