@@ -1,144 +1,428 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
-* {
-    box-sizing: border-box;
+
+
+@media only screen and (min-width: 800px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: auto;
+        font-family: 'Fjalla One', sans-serif;
+        background: ivory;
+
+    }
+
+    header {
+        background-color: #9A0002;
+        margin: auto;
+    }
+
+    h1 {
+        margin: auto;
+        text-align: center;
+        color: ivory;
+        font-size: 50px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #9A0002;
+
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: ivory;
+        text-align: center;
+        padding: 2px 16px;
+        text-decoration: none;
+        font-size: 3vh;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    #slideshow {
+        height: auto;
+        width: 100vw;
+
+    }
+
+    .image_container {
+        max-width: 100vw;
+        position: relative;
+        top: 5vh;
+
+        margin: auto;
+    }
+
+    .image_container img {
+        width: 55vw;
+        float: right;
+
+    }
+
+    .slides {
+        display: none;
+    }
+
+    .text {
+        max-width: 50vh;
+        position: absolute;
+        top: 7.5vh;
+        left: 7.5vw;
+        color: #9A0002;
+        font-size: 10vh;
+        text-align: center;
+
+    }
+
+    .flex-container {
+        padding: inherit;
+        margin: auto;
+        list-style: none;
+
+        display: flex;
+
+    }
+
+    .flex-item2 {
+        background: white;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+    }
+
+    .flex-item {
+        background: yellow;
+
+    }
+
+    #show {
+        display: flex;
+
+    }
+
+    #map {
+        height: 45vh;
+        width: 100%;
+        margin: auto;
+    }
+
+    footer {
+        background-color: #9A0002;
+        bottom: 0;
+        height: 4vh;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        padding-bottom: 50px;
+
+    }
+
+    footer p {
+        color: ivory;
+        font-size: 3vh;
+        margin-top: 1.5vh;
+    }
 }
-body {
-    margin:  auto;
-    font-family: 'Fjalla One', sans-serif;
-    background: ivory;
 
+@media only handheld and (max-width: 799px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: auto;
+        font-family: 'Fjalla One', sans-serif;
+        background: ivory;
+
+    }
+
+    header {
+        background-color: #9A0002;
+        margin: auto;
+    }
+
+    h1 {
+        margin: auto;
+        text-align: center;
+        color: ivory;
+        font-size: 50px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #9A0002;
+
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: ivory;
+        text-align: center;
+        padding: 2px 16px;
+        text-decoration: none;
+        font-size: 3vh;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    #slideshow {
+        height: auto;
+        width: 100vw;
+
+    }
+
+    .image_container {
+        max-width: 100vw;
+        position: relative;
+        top: 5vh;
+
+        margin: auto;
+    }
+
+    .image_container img {
+        width: 55vw;
+        float: right;
+
+    }
+
+    .slides {
+        display: none;
+    }
+
+    .text {
+        max-width: 50vh;
+        position: absolute;
+        top: 7.5vh;
+        left: 7.5vw;
+        color: #9A0002;
+        font-size: 10vh;
+        text-align: center;
+
+    }
+
+    .flex-container {
+        padding: inherit;
+        margin: auto;
+        list-style: none;
+
+        display: flex;
+
+    }
+
+    .flex-item2 {
+        background: white;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+    }
+
+    .flex-item {
+        
+
+    }
+
+    #show {
+        display: flex;
+
+    }
+
+    #map {
+        height: 45vh;
+        width: 100%;
+        margin: auto;
+    }
+
+    footer {
+        background-color: #9A0002;
+        bottom: 0;
+        height: 4vh;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        padding-bottom: 50px;
+
+    }
+
+    footer p {
+        color: ivory;
+        font-size: 3vh;
+        margin-top: 1.5vh;
+    }
 }
 
-header{
-    background-color: #9A0002;
-    margin:  auto;
-}
-
-h1 {
-    margin: auto;
-    text-align: center;
-    color: ivory;
-    font-size: 50px;
-}
+@media only handheld and (max-width: 399px) {
+    * {
+        box-sizing: border-box;
+    }
 
 
+    body {
+        margin: auto;
+        font-family: 'Fjalla One', sans-serif;
+        background: ivory;
 
+    }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #9A0002;
+    .image_container {
+        display: flex;
+    }
 
-}
+    #header {
+        background-color: #9A0002;
+        margin: auto;
+        justify-content: center;
+    }
 
-li {
-    float: left;
-}
+    #header h1 {
+        margin: auto;
+        text-align: center;
+        color: ivory;
+        font-size: 3.125em;
 
-li a {
-    display: block;
-    color: ivory;
-    text-align: center;
-    padding: 2px 16px;
-    text-decoration: none;
-    font-size: 3vh;
-}
+    }
 
-li a:hover {
-    background-color: #111;
-}
-#slideshow {
-    height: auto;
-    width: 100vw;
+    #header ul {
+        list-style-type: none;
+        margin: 1em;
+        padding-top: 1em;
+        overflow: hidden;
+        background-color: #9A0002;
 
-}
-.image_container {
-    max-width: 100vw;
-    position: relative;
-    top: 5vh;
-
-    margin: auto;
-}
-
-.image_container img {
-    width: 55vw;
-    float: right;
-
-}
-
-.slides {
-    display: none;
-}
-
-.text {
-    max-width: 50vh;
-    position: absolute;
-    top: 7.5vh;
-    left: 7.5vw;
-    color: #9A0002;
-    font-size: 10vh;
-    text-align: center;
-
-
-}
+    }
 
 
 
-.flex-container {
-    padding: inherit;
-    margin: auto;
-    list-style: none;
+    #header nav {
 
-    display: flex;
+    }
 
-}
+    #header nav li {
+        text-align: center;
+        float: right;
+    }
 
-.flex-item2 {
-background: white;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    #header li a {
+        display: block;
+        color: ivory;
+        text-align: center;
+        padding: 0.125em 1em;
+        text-decoration: none;
+        font-size: 3vh;
+
+    }
+
+    #header li a:hover {
+        background-color: #111;
+    }
+
+    #slideshow {
+        height: auto;
+        width: 100vw;
+        align-content: center;
+    }
+
+    .image_container {
+        max-width: 100vw;
+        position: relative;
+        top: 5vh;
+
+        margin: auto;
+    }
+
+    .image_container img {
+        width: 55vw;
+        float: right;
+
+    }
+
+    .slides {
+        display: none;
+    }
+
+    .text {
+        max-width: 50vh;
+        position: absolute;
+        top: 7.5vh;
+        left: 7.5vw;
+        color: #9A0002;
+        font-size: 10vh;
+        text-align: center;
+
+    }
+
+    .flex-container {
+        padding: inherit;
+        margin: auto;
+        list-style: none;
+
+        display: flex;
+
+    }
+
+    .flex-item2 {
+        background: white;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+    }
+
+    .flex-item {
 
 
+    }
 
-}
+    #show {
+        display: flex;
 
+    }
 
-.flex-item {
-  background:yellow ;
+    #map {
+        height: 45vh;
+        width: 100%;
+        margin: auto;
+    }
 
-}
+    footer {
+        background-color: #9A0002;
+        bottom: 0;
+        height: 4vh;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        padding-bottom: 50px;
 
-#show {
-    display: flex;
+    }
 
-
-}
-
-
-#map {
-    height: 45vh;
-    width: 100%;
-    margin:  auto;
-}
-
-footer {
-    background-color: #9A0002;
-    bottom: 0;
-    height: 4vh;
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    padding-bottom: 50px;
-    
-
-}
-
-footer p {
-    color: ivory;
-    font-size: 3vh;
-    margin-top: 1.5vh;
+    footer p {
+        color: ivory;
+        font-size: 3vh;
+        margin-top: 1.5vh;
+    }
 }
