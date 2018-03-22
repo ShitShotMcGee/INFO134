@@ -41,14 +41,15 @@
         <div id="avansert_søk">
             <form id="frm">
                 <input type="checkbox" name="herre" id="herre" placeholder="herre"/>Herre<br>
-                <input type="checkbox" name="kjønn" id="kjønn" placeholder="Kjønn"/>Dame<br>
-                <input type="checkbox" name="Rrullestoltilgang" id="rullestol" placeholder="Rullestoltilgang"/>Rullestol<br>
+                <input type="checkbox" name="dame" id="dame" placeholder="Kjønn"/>Dame<br>
+                <input type="checkbox" name="Rullestoltilgang" id="rullestol" placeholder="Rullestoltilgang"/>Rullestol<br>
                 <input type="checkbox" name="aapen" id="aapen" placeholder="Åpen"/>Åpen nå<br>
                 <input type="checkbox" name="stellerom" id="stellerom" placeholder="Stellerom"/>Stellerom<br>
                 <input type="checkbox" name="gratis" id="gratis" placeholder="Gratis"/>Gratis<br>
                 <input name="aapen klokkeslett" id="klokkeslett" placeholder="Åpen klokkeslett"/><br>
                 <input name="makspris" id="makspris" placeholder="Makspris"/><br><br>
-                <input type="button" id="søk" value="Søk"/>
+                <!--Knappen som kaller på funksjonen søk-->
+                <input type="button" id="sok" value="Søk" onclick="search()"/>
             </form>
         </div>
 
