@@ -25,8 +25,8 @@ function showSlides() {
         var map = new
         google.maps.Map(document.getElementById('map'), options);
 
-        for (var x in dassen) {
-            var bul = dassen[x];
+        for (var x in results) {
+            var bul = results[x];
             var loc = new google.maps.LatLng(bul.latitude,bul.longitude);
             var marker = new google.maps.Marker({
                 position: loc ,
