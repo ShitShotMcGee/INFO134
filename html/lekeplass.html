@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Lekeplasser</title>
-        <script type="text/javascript" src="js/console.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
-    </head>
-<body>
+<head>
+    <meta charset="UTF-8">
+    <title>Lekeplasser</title>
+    <script src="../js/lekeplasser.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body onload="lekeplassListe()">
 <div class="wrapper">
     <header class="header">
         <!--Header laget av NEH006-->
@@ -20,6 +20,8 @@
             </ul>
         </nav>
     </header>
+
+    <div id="lekeplassliste"></div>
 
     <footer>
         <p>Laget av NEH006 og WIZ005</p>

@@ -22,15 +22,18 @@ function loadListe() {
 
 //avansert søk
 
+
+
 function search() {
     var xhr = new XMLHttpRequest();
     var url = 'https://hotell.difi.no/api/json/bergen/dokart?';
+    var searchResults = [];
+    var searchObj = {};
     xhr.open('GET', url, true);
     xhr.onload = function () {
         if (this.status == 200) {
             var jsonData = JSON.parse(xhr.responseText);
-            var searchResults = [];
-            var searchObj = {};
+
             var skjekkHerre = document.getElementById('herre');
             var skjekkDame = document.getElementById('dame');
             var skjekkRullestol = document.getElementById('rullestol');
@@ -85,6 +88,18 @@ function search() {
                 }
             }
 
+            if (searchResults.length > 0) {
+                var text;
+                text = "<ol>";
+                for (i = 0; i < searchResults.length; i++) {
+                    text += "<li>" + searchResults[i].plassering + "</li>";
+                }
+                text += "</ol>";
+                document.getElementById('liste').innerHTML = text;
+            } else {
+
+                document.getElementById('liste').innerHTML = "Det finnest ingen toaletter med de kriteriumene";
+            }
 
             var map;
             map = new google.maps.Map(document.getElementById('map'), {
@@ -104,18 +119,34 @@ function search() {
                 });
             }
 
+        }
 
-            if (searchResults.length > 0) {
-                var text;
-                text = "<ol>";
-                for (i = 0; i < searchResults.length; i++) {
-                    text += "<li>" + searchResults[i].plassering + "</li>";
-                }
-                text += "</ol>";
-                document.getElementById('liste').innerHTML = text;
-            } else {
+    }
+    xhr.send();
+}
 
-                document.getElementById('liste').innerHTML = "Det finnest ingen toaletter med de kriteriumene";
+function initMap() {
+    var xhr = new XMLHttpRequest();
+    var url = 'https://hotell.difi.no/api/json/bergen/dokart?';
+    xhr.open('GET', url, true);
+    xhr.onload = function () {
+        if (this.status == 200) {
+            var jsonData = JSON.parse(xhr.responseText);
+            var map;
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 60.391011, lng: 5.325950},
+                zoom: 14
+            });
+            for (var i = 0; i < jsonData.entries.length; i++) {
+                var data = jsonData.entries[i],
+                    latLng = new google.maps.LatLng(data.latitude, data.longitude);
+
+                //Creating a marker and putting it on the map
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+
+                });
             }
         }
     }

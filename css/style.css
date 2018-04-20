@@ -145,8 +145,13 @@
 
     #map {
         display: flex;
-        width: 100%;
-        height: auto;
+
+        width: auto;
+        height: 20rem;
+    }
+
+    #lekeplassliste {
+        display: flex;
     }
 
     footer {
