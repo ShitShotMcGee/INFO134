@@ -15,29 +15,30 @@ function showSlides() {
 }
 
 
-//Javascript til toalett kartet
+function initMap() {
+    var map;
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat:60.391011 , lng:5.325950},
+        zoom: 14
+    });
 
-    function initMap() {
-        var options = {
-            zoom: 13,
-            center: {lat: 60.389772, lng: 5.331281}
-        }
-        var map = new
-        google.maps.Map(document.getElementById('map'), options);
+    for (var i = 0 ; i < toaletter.length;  i++) {
+        var data = toaletter[i],
+            latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
-        for (var x in results) {
-            var bul = results[x];
-            var loc = new google.maps.LatLng(bul.latitude,bul.longitude);
-            var marker = new google.maps.Marker({
-                position: loc ,
-                title: bul.plassering
+        //Creating a marker and putting it on the map
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
 
-                ,
-                map: map
-            });
-
-        }
+        });
     }
+
+
+
+
+}
+
 
 
 

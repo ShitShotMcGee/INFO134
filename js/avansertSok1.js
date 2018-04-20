@@ -20,8 +20,9 @@ function elementConst(herre, dame, rullestol, stellerom, aapen, pris) {
 }
 
 
-
+//avansert søk
 function search() {
+    var searchResults = [];
     var searchObj = {};
     var skjekkHerre = document.getElementById('herre');
     var skjekkDame = document.getElementById('dame');
@@ -29,7 +30,7 @@ function search() {
     var skjekkStellerom = document.getElementById('stellerom');
     var skjekkAapen = document.getElementById('aapen');
     var skjekkGratis = document.getElementById('gratis');
-
+    var sjekkMakspris = document.getElementById('makspris');
 
     if (skjekkHerre.checked == true) {
         searchObj.herre = 1;
@@ -49,11 +50,15 @@ function search() {
     if(skjekkGratis.checked == true ){
         searchObj.pris = 0;
     }
+
+
+
+
     if(skjekkHerre.checked == false && skjekkDame.checked == false && skjekkRullestol.checked == false &&
         skjekkStellerom.checked == false && skjekkAapen.checked == false && skjekkGratis.checked == false) {
-        alert(" Ingenting er markert, du må markere en box  ")
+        alert(" Ingenting er markert, du må markere noe")
     }
-    var searchResults = [];
+
 
     var searchParam = Object.keys(searchObj);
     for (i = 0; i < toaletter.length; i++) {
@@ -68,6 +73,26 @@ function search() {
         }
     }
 
+
+    var map;
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat:60.391011 , lng:5.325950},
+        zoom: 14
+    });
+
+    for (var i = 0 ; i < searchResults.length;  i++) {
+        var data = searchResults[i],
+            latLng = new google.maps.LatLng(data.latitude, data.longitude);
+
+        // Creating a marker and putting it on the map
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+
+        });
+    }
+
+
     if (searchResults.length > 0 ){
         var text;
         text = "<ol>";
@@ -81,12 +106,4 @@ function search() {
         document.getElementById('liste').innerHTML= "Det finnest ingen toaletter med de kriteriumene";
     }
 
-
-
-
 }
-
-
-
-
-
