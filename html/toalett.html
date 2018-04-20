@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Toaletter</title>
-    <script type="text/javascript" src="../js/console.js"></script>
-    <script type="text/javascript" src="../js/script.js"></script>
+    <script src="../js/script.js"></script>
     <script src="../js/toalett.js"></script>
     <script src="../js/avansertSok1.js"></script>
+    <script src="../js/map.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-
     <script src="../js/hurtigSøk.js"></script>
     <script src="../js/avansertSok1.js"></script>
-
     <meta name="viewport" content="initial-scale=1.0">
-
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
@@ -21,52 +18,51 @@
 
 </head>
 
-<body onload="loadListe()"  >
-    <div class="wrapper">
-        <header class="header">
-            <h1>Bergen By</h1>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Startside</a></li>
-                    <li><a href="gjøremål.html">Gjøremål</a></li>
-                    <li><a href="toalett.html">Toaletter</a></li>
-                </ul>
-            </nav>
-        </header>
-        <!--Kart og markers implementert av neh006-->
-        <div id="hurtigsøk">
-            <input name="Hurtigsøk" id="rasktsok" placeholder="Hurtigsøk"/>
-            <input type="button" id="kjaptsøk" value="Søk"/>
+<body onload="loadListe()">
+<div class="wrapper">
+    <header class="header">
+        <h1>Bergen By</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Startside</a></li>
+                <li><a href="gjøremål.html">Gjøremål</a></li>
+                <li><a href="toalett.html">Toaletter</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--Kart og markers implementert av neh006-->
+    <div id="hurtigsøk">
+        <input name="Hurtigsøk" id="rasktsok" placeholder="Hurtigsøk"/>
+        <input type="button" id="kjaptsøk" value="Søk"/>
 
-        </div>
-        <div id="avansert_søk">
-            <form id="frm">
-                <input type="checkbox" name="herre" id="herre" placeholder="herre"/>Herre<br>
-                <input type="checkbox" name="dame" id="dame" placeholder="Kjønn"/>Dame<br>
-                <input type="checkbox" name="Rullestoltilgang" id="rullestol" placeholder="Rullestoltilgang"/>Rullestol<br>
-                <input type="checkbox" name="aapen" id="aapen" placeholder="Åpen"/>Åpen nå<br>
-                <input type="checkbox" name="stellerom" id="stellerom" placeholder="Stellerom"/>Stellerom<br>
-                <input type="checkbox" name="gratis" id="gratis" placeholder="Gratis"/>Gratis<br>
-                <input name="aapen klokkeslett" id="klokkeslett" placeholder="Åpen klokkeslett"/><br>
-                <input name="makspris" id="makspris" placeholder="Makspris"/><br><br>
-                <!--Knappen som kaller på funksjonen søk-->
-                <input type="button" id="sok" value="Søk" onclick="search()"/>
-            </form>
-        </div>
+    </div>
+    <div id="avansert_søk">
+        <form id="frm">
+            <input type="checkbox" name="herre" id="herre" placeholder="herre"/>Herre<br>
+            <input type="checkbox" name="dame" id="dame" placeholder="Kjønn"/>Dame<br>
+            <input type="checkbox" name="Rullestoltilgang" id="rullestol" placeholder="Rullestoltilgang"/>Rullestol<br>
+            <input type="checkbox" name="aapen" id="aapen" placeholder="Åpen"/>Åpen nå<br>
+            <input type="checkbox" name="stellerom" id="stellerom" placeholder="Stellerom"/>Stellerom<br>
+            <input type="checkbox" name="gratis" id="gratis" placeholder="Gratis"/>Gratis<br>
+            <input name="aapen klokkeslett" id="klokkeslett" placeholder="Åpen klokkeslett"/><br>
+            <input name="makspris" id="makspris" placeholder="Makspris"/><br><br>
+            <!--Knappen som kaller på funksjonen søk-->
+            <input type="button" id="sok" value="Søk" onclick="search()"/>
+        </form>
+    </div>
 
 
-        <div id="sokList">
-
-            <div id="liste">
+    <div id="sokList">
+        <div id="liste">
 
         </div>
 
         <div id="avansertSok"</div>
 
-        <p id="map"></p>
-        <footer>
-            <p>Laget av NEH006 og WIZ005</p>
-        </footer>
-    </div>
+    <div id="map"></div>
+    <footer>
+        <p>Laget av NEH006 og WIZ005</p>
+    </footer>
+</div>
 </body>
 </html>
