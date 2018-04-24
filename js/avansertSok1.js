@@ -1,24 +1,24 @@
 var link = 'https://hotell.difi.no/api/json/bergen/dokart?';
 
-function getJson(url, callback) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-// Typical action to be performed when the document is ready:
-            callback(xhttp.responseText)
-        }
-    };
-    xhttp.open("GET", url, true);
-    xhttp.send();
-}
+// function getJson(url, callback) {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+// // Typical action to be performed when the document is ready:
+//             callback(xhttp.responseText)
+//         }
+//     };
+//     xhttp.open("GET", url, true);
+//     xhttp.send();
+// }
+//
+// function setup(data) {
+//     console.log(data);
+// }
+// function start() {
+//     hentData(link, loadListe());
+// }
 
-function setup(data) {
-    console.log(data);
-}
-
-function start() {
-    getJson(link, loadListe());
-}
 
 
 
@@ -27,18 +27,16 @@ function hentData(url, callback) {
     xhr.onload = function () {
         if (this.status == 200) {
             callback(xhr.responseText);
-        };
-        xhr.onerror = function () {
-            alert('Feil ved innhenting...');
         }
+    };
         xhr.open('GET', url, true);
         xhr.send();
-    }
+
 }
 
 
-function loadListe() {
-    hentData(link);
+function loadListe(data) {
+    hentData(data);
     var text;
     text = "<ol>";
     for (i = 0; i < jsonData.entries.length; i++) {
@@ -46,6 +44,10 @@ function loadListe() {
     }
     text += "</ol>";
     document.getElementById('liste').innerHTML = text;
+}
+
+function start() {
+    hentData(link, loadListe());
 }
 
 //avansert søk
@@ -178,6 +180,8 @@ function initMap() {
     }
     xhr.send();
 }
+
+
 
 
 
