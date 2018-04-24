@@ -24,14 +24,14 @@ function start() {
 
 function hentData(url, callback) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
     xhr.onload = function () {
         if (this.status == 200) {
             callback(xhr.responseText);
-        }
+        };
         xhr.onerror = function () {
             alert('Feil ved innhenting...');
         }
+        xhr.open('GET', url, true);
         xhr.send();
     }
 }
