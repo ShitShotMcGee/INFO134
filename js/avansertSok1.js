@@ -1,7 +1,8 @@
+// link til json data fra en url
 var link = 'https://hotell.difi.no/api/json/bergen/dokart?';
 
 
-
+// en funksjon som henter data ut fra nettet
 function hentData(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -25,18 +26,19 @@ function loadListe(data) {
     text += "</ol>";
     document.getElementById('liste').innerHTML = text;
 }
-
+// funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 function start() {
     hentData(link, loadListe);
 }
 
+// avansert søk knappen, som tar in en url og en callback funksjon parameter
 function start2() {
     hentData(link,search );
 }
 
 
+// avansert søk funksjonen
 function search(dataUrl) {
-
     var searchResults = [];
     var searchObj = {};
     var skjekkHerre = document.getElementById('herre');
