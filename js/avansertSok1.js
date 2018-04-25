@@ -16,7 +16,7 @@ var link = 'https://hotell.difi.no/api/json/bergen/dokart?';
 //     console.log(data);
 // }
 // function start() {
-//     hentData(link, loadListe());
+//     hentData(url, setup());
 // }
 
 
@@ -26,7 +26,8 @@ function hentData(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (this.status == 200) {
-            callback(xhr.responseText);
+            var loadData = JSON.parse(this.responseText);
+            callback(loadData);
         }
     };
         xhr.open('GET', url, true);
@@ -39,15 +40,15 @@ function loadListe(data) {
     hentData(data);
     var text;
     text = "<ol>";
-    for (i = 0; i < jsonData.entries.length; i++) {
-        text += "<li>" + jsonData.entries[i].plassering + "</li>";
+    for (i = 0; i < data.entries.length; i++) {
+        text += "<li>" + data.entries[i].plassering + "</li>";
     }
     text += "</ol>";
     document.getElementById('liste').innerHTML = text;
 }
 
 function start() {
-    hentData(link, loadListe());
+    hentData(link, loadListe);
 }
 
 //avansert søk
