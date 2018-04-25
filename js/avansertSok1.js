@@ -37,7 +37,6 @@ function hentData(url, callback) {
 
 
 function loadListe(data) {
-    hentData(data);
     var text;
     text = "<ol>";
     for (i = 0; i < data.entries.length; i++) {
@@ -106,14 +105,16 @@ function search() {
 
             var searchParam = Object.keys(searchObj);
             for (i = 0; i < jsonData.entries.length; i++) {
-                var truthChecker = [];
-                for (x = 0; x < searchParam.length; x++) {
+                var checker = 0;
+                for (var x = 0; x < searchParam.length; x++) {
                     if (jsonData.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
-                        truthChecker.push(true);
+                        checker++
+
                     }
-                    if (truthChecker.length === searchParam.length) {
-                        searchResults.push(jsonData.entries[i]);
+
                     }
+                if (checker === searchParam.length) {
+                    searchResults.push(jsonData.entries[i]);
                 }
             }
 
