@@ -5,6 +5,9 @@
     <title>Lekeplasser</title>
     <script src="../js/lekeplasser.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
+    </script>
 </head>
 <body onload="startLekeplass()">
 <div class="wrapper">
@@ -21,9 +24,17 @@
         </nav>
     </header>
 
+    <input id="finne" type="text" name="" value="">
+
+    <button onclick="finnleke()" type="button" name="button">søk</button>
+
     <p id="listeLekeplass"></p>
 
-    <footer>
+    <div id="map">
+
+
+
+        <footer>
         <p>Laget av NEH006 og WIZ005</p>
     </footer>
 </div>
