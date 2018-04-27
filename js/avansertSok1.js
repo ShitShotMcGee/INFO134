@@ -11,8 +11,8 @@ function hentData(url, callback) {
             callback(loadData);
         }
     };
-        xhr.open('GET', url, true);
-        xhr.send();
+    xhr.open('GET', url, true);
+    xhr.send();
 
 }
 
@@ -26,6 +26,7 @@ function loadListe(data) {
     text += "</ol>";
     document.getElementById('liste').innerHTML = text;
 }
+
 // funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 function start() {
     hentData(link, loadListe);
@@ -33,7 +34,7 @@ function start() {
 
 // avansert søk knappen, som tar in en url og en callback funksjon parameter
 function start2() {
-    hentData(link,search );
+    hentData(link, search);
 }
 
 
@@ -62,17 +63,27 @@ function search(dataUrl) {
         searchObj.stellerom = "1";
     }
     if (skjekkAapen.checked === true) {
-        var finn = /\d{2}.\d{2}\s-\s\d{2}.\d{2}/;
-        var klokkeslett = [];
-        for (i = 0; i < jsonData.entries.length; i++) {
+        function getTime() {
+            let arr = [];
+            let arrP = [];
 
-            klokkeslett.push(dataUrl.entries[i].tid_hverdag.split(' ', 3));
+            for (i = 0; i < data.entries.length; i++) {
+                let list = data.entries[i].tid_hverdag;
+                arr.push(list.split("-"));
+            }
+            console.log(arr);
 
-            console.log(klokkeslett);
+            for (i = 0; i < arr.length; i++) {
+                arrP.push(parseFloat(arr[i][0]));
+                arrP.push(parseFloat(arr[i][1]));
+            }
+            console.log(arrP);
+
+            getTime();
         }
 
-
     }
+
     if (skjekkGratis.checked == true) {
         searchObj.pris = "0";
     }
