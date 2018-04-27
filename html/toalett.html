@@ -32,23 +32,26 @@
         <input name="Hurtigsøk" id="rasktsok" placeholder="Hurtigsøk"/>
         <input type="button" id="kjaptsøk" value="Søk"/>
     </div>
-    <div id="avansert_søk">
-        <form id="frm">
-            <input type="checkbox" name="herre" id="herre" placeholder="herre"/>Herre<br>
-            <input type="checkbox" name="dame" id="dame" placeholder="Kjønn"/>Dame<br>
-            <input type="checkbox" name="Rullestoltilgang" id="rullestol" placeholder="Rullestoltilgang"/>Rullestol<br>
-            <input type="checkbox" name="aapen" id="aapen" placeholder="Åpen"/>Åpen nå<br>
-            <input type="checkbox" name="stellerom" id="stellerom" placeholder="Stellerom"/>Stellerom<br>
-            <input type="checkbox" name="gratis" id="gratis" placeholder="Gratis"/>Gratis<br>
-            <input name="aapen klokkeslett" id="klokkeslett" placeholder="Åpen klokkeslett"/><br>
-            <input name="makspris" id="makspris" placeholder="Makspris"/><br><br>
-            <!--Knappen som kaller på funksjonen søk-->
-            <input type="button" id="sok" value="Søk" onclick="start2()"/>
-        </form>
+    <div id="mapliste">
+        <div id="avansert_søk">
+            <form id="frm">
+                <input type="checkbox" name="herre" id="herre" placeholder="herre"/>Herre<br>
+                <input type="checkbox" name="dame" id="dame" placeholder="Kjønn"/>Dame<br>
+                <input type="checkbox" name="Rullestoltilgang" id="rullestol"
+                       placeholder="Rullestoltilgang"/>Rullestol<br>
+                <input type="checkbox" name="aapen" id="aapen" placeholder="Åpen"/>Åpen nå<br>
+                <input type="checkbox" name="stellerom" id="stellerom" placeholder="Stellerom"/>Stellerom<br>
+                <input type="checkbox" name="gratis" id="gratis" placeholder="Gratis"/>Gratis<br>
+                <input name="aapen klokkeslett" id="klokkeslett" placeholder="Åpen klokkeslett"/><br>
+                <input name="makspris" id="makspris" placeholder="Makspris"/><br><br>
+                <!--Knappen som kaller på funksjonen søk-->
+                <input type="button" id="sok" value="Søk" onclick="start2()"/>
+            </form>
+        </div>
+        <div id="map"></div>
+        <div id="liste"></div>
+        <div id="avansertSok"></div>
     </div>
-    <div id="liste"></div>
-    <div id="avansertSok"></div>
-    <div id="map"></div>
     <footer>
         <p>Laget av NEH006 og WIZ005</p>
     </footer>

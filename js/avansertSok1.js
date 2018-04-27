@@ -87,6 +87,7 @@ function search(dataUrl) {
     if (skjekkGratis.checked == true) {
         searchObj.pris = "0";
     }
+
     if (skjekkHerre.checked == false && skjekkDame.checked == false && skjekkRullestol.checked == false &&
         skjekkStellerom.checked == false && skjekkAapen.checked == false && skjekkGratis.checked == false) {
         alert(" Ingenting er markert, du må markere en box  ")

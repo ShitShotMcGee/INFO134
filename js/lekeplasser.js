@@ -41,13 +41,6 @@ function lekeplassListe(data) {
 
         });
     }
-
-
-
-
-
-
-
 }
 // funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 
@@ -84,8 +77,6 @@ function finn(data) {
         if (truthChecker === searchParam.length) {
             searchResults.push(data.entries[i]);
         }
-
-
     }
 
     if (searchResults.length > 0) {
