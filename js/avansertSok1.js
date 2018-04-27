@@ -74,17 +74,27 @@ function search(dataUrl) {
         var arrSondagAapen = [];
         var arrSondagSteng = [];
 
-        if(date.getDay() > 0 && <= 5) {
+        if(date.getDay() <= 5) {
             for (i = 0; i < dataUrl.entries.length; i++) {
                 let list = dataUrl.entries[i].tid_hverdag;
                 arrHverdag.push(list.split("-"));
             }
+            console.log(arrHverdag);
+            for (i = 0; i < arrHverdag.length; i++) {
+                arrHverdagAapen.push(parseFloat(arrHverdagAapen[i][0]));
+                arrHverdagSteng.push(parseFloat(arrHverdagSteng[i][1]));
+            }
+            console.log(arrHverdagAapen, arrHverdagSteng);
         }
 
         if(date.getDay() === 6) {
-            for (i = 0; i < dataUrl.entries.length; i++) {
+            for (x = 0; x < dataUrl.entries.length; x++) {
                 let list = dataUrl.entries[i].tid_lordag;
                 arrLordag.push(list.split("-"));
+            }
+            for (i = 0; i < arrLordag.length; i++) {
+                arrLordagAapen.push(parseFloat(arrLordagAapen[i][0]));
+                arrLordagSteng.push(parseFloat(arrLordagSteng[i][1]));
             }
         }
 
@@ -93,11 +103,12 @@ function search(dataUrl) {
                 let list = dataUrl.entries[i].tid_sondag;
                 arrSondag.push(list.split("-"));
             }
+            for (i = 0; i < arrSondag.length; i++) {
+                arrSondagAapen.push(parseFloat(arrSondagAapen[i][0]));
+                arrSondagSteng.push(parseFloat(arrSondagSteng[i][1]));
+            }
         }
-        for (i = 0; i < arr.length; i++) {
-            arrHverdagAapenAapen.push(parseFloat(arr[i][0]));
-            arrHverdagStengSteng.push(parseFloat(arr[i][1]));
-        }
+
     }
 
     if (skjekkGratis.checked == true) {
