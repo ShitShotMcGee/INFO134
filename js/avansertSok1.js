@@ -76,13 +76,13 @@ function search(dataUrl) {
 
         if(date.getDay() <= 5) {
             for (i = 0; i < dataUrl.entries.length; i++) {
-                let list = dataUrl.entries[i].tid_hverdag;
+                var list = dataUrl.entries[i].tid_hverdag;
                 arrHverdag.push(list.split("-"));
             }
             console.log(arrHverdag);
             for (i = 0; i < arrHverdag.length; i++) {
-                arrHverdagAapen.push(parseFloat(arrHverdagAapen[i][0]));
-                arrHverdagSteng.push(parseFloat(arrHverdagSteng[i][1]));
+                arrHverdagAapen.push(parseFloat(arrHverdag[i][0]));
+                arrHverdagSteng.push(parseFloat(arrHverdag[i][1]));
             }
             console.log(arrHverdagAapen, arrHverdagSteng);
         }
@@ -93,8 +93,8 @@ function search(dataUrl) {
                 arrLordag.push(list.split("-"));
             }
             for (i = 0; i < arrLordag.length; i++) {
-                arrLordagAapen.push(parseFloat(arrLordagAapen[i][0]));
-                arrLordagSteng.push(parseFloat(arrLordagSteng[i][1]));
+                arrLordagAapen.push(parseFloat(arrLordag[i][0]));
+                arrLordagSteng.push(parseFloat(arrLordag[i][1]));
             }
         }
 
@@ -104,8 +104,8 @@ function search(dataUrl) {
                 arrSondag.push(list.split("-"));
             }
             for (i = 0; i < arrSondag.length; i++) {
-                arrSondagAapen.push(parseFloat(arrSondagAapen[i][0]));
-                arrSondagSteng.push(parseFloat(arrSondagSteng[i][1]));
+                arrSondagAapen.push(parseFloat(arrSondag[i][0]));
+                arrSondagSteng.push(parseFloat(arrSondag[i][1]));
             }
         }
 
