@@ -2,20 +2,6 @@
 var link = 'https://hotell.difi.no/api/json/bergen/dokart?';
 
 
-// en funksjon som henter data ut fra nettet
-function hentData(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (this.status == 200) {
-            var loadData = JSON.parse(this.responseText);
-            callback(loadData);
-        }
-    };
-    xhr.open('GET', url, true);
-    xhr.send();
-
-}
-
 
 function loadListe(data) {
     var text;
@@ -38,7 +24,6 @@ function start() {
 function start2() {
     hentData(link, search);
 }
-
 
 // avansert søk funksjonen
 function search(dataUrl) {
@@ -87,6 +72,11 @@ function search(dataUrl) {
                 arrHverdagSteng.push(parseFloat(arrHverdag[i][1]));
             }
             console.log(arrHverdagAapen, arrHverdagSteng);
+
+            if(date.getHours() >= arrHverdagAapen && date.getHours() <= arrHverdagSteng){
+
+            }
+            console.log(searchObj.aapen);
         }
 
         if(date.getDay() === 6) {
@@ -110,13 +100,6 @@ function search(dataUrl) {
                 arrSondagSteng.push(parseFloat(arrSondag[i][1]));
             }
         }
-
-
-
-
-
-
-
 
     }
 
@@ -175,31 +158,6 @@ function search(dataUrl) {
 
         });
     }
-
-
-}
-
-
-
-function initMap(jsonData) {
-
-            var map;
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 60.391011, lng: 5.325950},
-                zoom: 14
-            });
-            for (var i = 0; i < jsonData.entries.length; i++) {
-                var data = jsonData.entries[i],
-                    latLng = new google.maps.LatLng(data.latitude, data.longitude);
-
-                //Creating a marker and putting it on the map
-                var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-
-                });
-            }
-
 
 
 }
