@@ -29,13 +29,8 @@ var searchObj = {};
 
 // avansert søk funksjonen
 function search(dataUrl) {
-
-
      searchResults = [];
     searchObj = {};
-
-
-
     var skjekkHerre = document.getElementById('herre');
     var skjekkDame = document.getElementById('dame');
     var skjekkRullestol = document.getElementById('rullestol');
@@ -111,6 +106,8 @@ function search(dataUrl) {
 
     }
 
+
+
     if (skjekkGratis.checked ===true) {
         searchObj.pris = "0";
     }
@@ -122,8 +119,8 @@ function search(dataUrl) {
 
 
     check(dataUrl);
-    update(dataUrl);
-    updateMap(dataUrl);
+    updateToalett();
+    updateMap();
 
 }
 
@@ -149,7 +146,7 @@ function search(dataUrl) {
 
     }
 
-    function update  (dataUrl) {
+    function updateToalett  () {
 
         if (searchResults.length > 0) {
             var text;
@@ -167,33 +164,50 @@ function search(dataUrl) {
     }
 
 
-function updateMap (dataUrl) {
-    var map;
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 60.391011, lng: 5.325950},
-        zoom: 14
-    });
 
-    for (var i = 0; i < searchResults.length; i++) {
-        var data = searchResults[i],
-            latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
-        // Creating a marker and putting it on the map
-        var marker = new google.maps.Marker({
-            position: latLng,
-            map: map,
+    function starten() {
+    hentData(link, hurtigsok);
 
-        });
     }
 
+
+function hurtigsok(dataUrl) {
+    searchObj = {};
+    searchResults = [];
+    var regexOpen = /(open)|(Ã¥pen)/i;
+    var regexherre = /(herre)|(male)|(boy)|(gutt)|(men)/i;
+    var regexDame = /(dame)|(female)|(girl)|(jente)|(lady)/i;
+    var regexRullestol = /(rullestol)|(wheelchair)|(handicapped)/i;
+    var regexStelle = /(stellerom)|(changingroom)|(Nursery)/i;
+    var regexGratis = /(gratis)|(free)/i;
+
+
+
+    if (regexherre.test(rasktsok.value)) {
+        searchObj.herre = "1";
+    }
+    if (regexDame.test(rasktsok.value)) {
+        searchObj.dame = "1";
+    }
+    if (regexRullestol.test(rasktsok.value)) {
+        searchObj.rullestol = "1";
+    }
+    if (regexStelle.test(rasktsok.value)) {
+        searchObj.stellerom = "1";
+    }
+    if (regexGratis.test(rasktsok.value)) {
+        searchObj.pris = "0";
+    }
+    if (regexOpen.test(rasktsok.value)) {
+
+    }
+
+    check(dataUrl);
+    updateToalett();
+    updateMap();
+
 }
-
-
-
-
-
-
-
 
 
 

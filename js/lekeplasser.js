@@ -1,25 +1,20 @@
 var lekeplass = 'https://hotell.difi.no/api/json/bergen/lekeplasser?';
+
 function startLekeplass() {
     hentData(lekeplass, lekeplassListe);
+    hentData( lekeplass,initMap  )
 }
 
-
-function finnleke() {
+function finnlekeplass() {
 
     hentData(lekeplass, finn);
 }
 
-function kart() {
-    hentData(lekeplass,kart );
-
+function selector(){
+    hentData(lekeplass ,selectCreateor);
 }
 
-function drop(){
-    hentData(lekeplass ,functionName);
-}
-
-
-function functionName(data) {
+function selectCreateor(data) {
 
     for (var i = 0; i < data.entries.length; i++) {
         var select = document.getElementById("Select");
@@ -31,12 +26,9 @@ function functionName(data) {
 
 }
 
-
-
-
 function visFavLeke () {
 
-    document.getElementById('name').textContent = localStorage.getItem('name');
+    document.getElementById('minFavoritt').textContent = localStorage.getItem('name');
 
 }
 
@@ -51,8 +43,6 @@ function visFavLeke () {
 
 
 
-
-
 function lekeplassListe(data) {
     var text;
     text = "<ol>";
@@ -62,46 +52,42 @@ function lekeplassListe(data) {
     text += "</ol>";
     document.getElementById('listeLekeplass').innerHTML = text;
 
-    var map;
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 60.391011, lng: 5.325950},
-        zoom: 14
-    });
-    for (var i = 0; i < data.entries.length; i++) {
-        var dataKart = data.entries[i],
-            latLng = new google.maps.LatLng(dataKart.latitude, dataKart.longitude);
-
-        //Creating a marker and putting it on the map
-        var marker = new google.maps.Marker({
-            position: latLng,
-            map: map,
-
-        });
-    }
 }
 // funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 
 
+var searchResults = [];
+function finn(dataUrl) {
+    searchResults = [];
+    check(dataUrl);
+
+    updateLekeplass ();
+    updateMap();
 
 
+}
 
-function finn(data) {
+function check (dataUrl) {
     var sjekk = document.getElementById('finne');
-    var searchObj = {"navn": sjekk.value };
-    var searchResults = [];
+    var searchObj = {"navn": sjekk.value};
     var searchParam = Object.keys(searchObj);
-    for (i = 0; i < data.entries.length; i++) {
-        var truthChecker = 0;
-        for (x = 0; x < searchParam.length; x++) {
-            if (data.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
-                truthChecker++;
+    for (var i = 0; i < dataUrl.entries.length; i++) {
+        var checker = 0;
+        for (var x = 0; x < searchParam.length; x++) {
+            if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
+                checker++;
             }
 
         }
-        if (truthChecker === searchParam.length) {
-            searchResults.push(data.entries[i]);
+        if (checker === searchParam.length) {
+            searchResults.push(dataUrl.entries[i]);
         }
     }
+
+}
+
+function updateLekeplass () {
+
 
     if (searchResults.length > 0) {
         var text;
@@ -116,24 +102,5 @@ function finn(data) {
         document.getElementById('listeLekeplass').innerHTML = "Det finnest ingen lekeplass med dette navnet";
     }
 
-
-    var map;
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 60.391011, lng: 5.325950},
-        zoom: 11
-    });
-
-    for (var i = 0; i < searchResults.length; i++) {
-        var dataMap = searchResults[i],
-            latLng = new google.maps.LatLng(dataMap.latitude, dataMap.longitude);
-
-        // Creating a marker and putting it on the map
-        var marker = new google.maps.Marker({
-            position: latLng,
-            map: map,
-            lable:1
-
-        });
-    }
 
 }

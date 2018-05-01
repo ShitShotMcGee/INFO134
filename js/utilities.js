@@ -43,13 +43,52 @@ function showSlides() {
     setTimeout(showSlides, 5000);
 }
 
-function initMap() {
+function initMap(data) {
     var map;
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 60.391011, lng: 5.325950},
         zoom: 14
     });
+
+
+    for (var i = 0; i < data.entries.length; i++) {
+        var dataKart = data.entries[i],
+            latLng = new google.maps.LatLng(dataKart.latitude, dataKart.longitude);
+
+        //Creating a marker and putting it on the map
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+
+        });
+    }
+
 }
 
 
-//lol
+function updateMap () {
+    var map;
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 60.391011, lng: 5.325950},
+        zoom: 14
+    });
+
+    for (var i = 0; i < searchResults.length; i++) {
+        var data = searchResults[i],
+            latLng = new google.maps.LatLng(data.latitude, data.longitude);
+
+        // Creating a marker and putting it on the map
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+
+        });
+    }
+
+}
+
+
+
+
+
+
