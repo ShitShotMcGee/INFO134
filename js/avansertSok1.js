@@ -2,7 +2,6 @@
 var link = 'https://hotell.difi.no/api/json/bergen/dokart?';
 
 
-
 function loadListe(data) {
     var text;
     text = "<ol>";
@@ -25,10 +24,18 @@ function start2() {
     hentData(link, search);
 }
 
+var searchResults = [];
+var searchObj = {};
+
 // avansert søk funksjonen
 function search(dataUrl) {
-    var searchResults = [];
-    var searchObj = {};
+
+
+     searchResults = [];
+    searchObj = {};
+
+
+
     var skjekkHerre = document.getElementById('herre');
     var skjekkDame = document.getElementById('dame');
     var skjekkRullestol = document.getElementById('rullestol');
@@ -37,19 +44,19 @@ function search(dataUrl) {
     var skjekkGratis = document.getElementById('gratis');
     var sjekkMakspris = document.getElementById('makspris');
 
-    if (skjekkHerre.checked == true) {
+    if (skjekkHerre.checked === true) {
         searchObj.herre = "1";
     }
-    if (skjekkDame.checked == true) {
+    if (skjekkDame.checked === true) {
         searchObj.dame = "1";
     }
-    if (skjekkRullestol.checked == true) {
+    if (skjekkRullestol.checked === true) {
         searchObj.rullestol = "1";
     }
-    if (skjekkStellerom.checked == true) {
+    if (skjekkStellerom.checked === true) {
         searchObj.stellerom = "1";
     }
-    if (skjekkAapen.checked === true) {
+    if (skjekkAapen.checked ===true) {
         var date = new Date();
         var arrHverdag = [];
         var arrLordag = [];
@@ -61,7 +68,7 @@ function search(dataUrl) {
         var arrSondagAapen = [];
         var arrSondagSteng = [];
 
-        if(date.getDay() <= 5) {
+        if (date.getDay() <= 5) {
             for (i = 0; i < dataUrl.entries.length; i++) {
                 var list = dataUrl.entries[i].tid_hverdag;
                 arrHverdag.push(list.split("-"));
@@ -73,13 +80,14 @@ function search(dataUrl) {
             }
             console.log(arrHverdagAapen, arrHverdagSteng);
 
-            if(date.getHours() >= arrHverdagAapen && date.getHours() <= arrHverdagSteng){
+            if (date.getHours() >= arrHverdagAapen && date.getHours() <= arrHverdagSteng) {
 
             }
             console.log(searchObj.aapen);
         }
 
-        if(date.getDay() === 6) {
+
+        if (date.getDay() === 6) {
             for (x = 0; x < dataUrl.entries.length; x++) {
                 let list = dataUrl.entries[i].tid_lordag;
                 arrLordag.push(list.split("-"));
@@ -90,7 +98,7 @@ function search(dataUrl) {
             }
         }
 
-        if(date.getDay() === 7) {
+        if (date.getDay() === 7) {
             for (i = 0; i < dataUrl.entries.length; i++) {
                 let list = dataUrl.entries[i].tid_sondag;
                 arrSondag.push(list.split("-"));
@@ -103,44 +111,63 @@ function search(dataUrl) {
 
     }
 
-    if (skjekkGratis.checked == true) {
+    if (skjekkGratis.checked ===true) {
         searchObj.pris = "0";
     }
-    if (skjekkHerre.checked == false && skjekkDame.checked == false && skjekkRullestol.checked == false &&
-        skjekkStellerom.checked == false && skjekkAapen.checked == false && skjekkGratis.checked == false) {
+    if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked ===false &&
+        skjekkStellerom.checked === false && skjekkAapen.checked === false && skjekkGratis.checked === false) {
         alert(" Ingenting er markert, du må markere en box  ")
     }
 
 
-    var searchParam = Object.keys(searchObj);
-    for (i = 0; i < dataUrl.entries.length; i++) {
-        var truthChecker = 0;
-        for (x = 0; x < searchParam.length; x++) {
-            if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
-                truthChecker++;
+
+    check(dataUrl);
+    update(dataUrl);
+    updateMap(dataUrl);
+
+}
+
+
+    function check (dataUrl) {
+
+
+        var searchParam = Object.keys(searchObj);
+        for (i = 0; i < dataUrl.entries.length; i++) {
+            var truthChecker = 0;
+            for (x = 0; x < searchParam.length; x++) {
+                if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
+                    truthChecker++;
+                }
+
+            }
+            if (truthChecker === searchParam.length) {
+                searchResults.push(dataUrl.entries[i]);
             }
 
-        }
-        if (truthChecker === searchParam.length) {
-            searchResults.push(dataUrl.entries[i]);
-        }
 
+        }
 
     }
 
-    if (searchResults.length > 0) {
-        var text;
-        text = "<ol>";
-        for (i = 0; i < searchResults.length; i++) {
-            text += "<li>" + searchResults[i].plassering + "</li>";
-        }
-        text += "</ol>";
-        document.getElementById('liste').innerHTML = text;
-    } else {
+    function update  (dataUrl) {
 
-        document.getElementById('liste').innerHTML = "Det finnest ingen toaletter med de kriteriumene";
+        if (searchResults.length > 0) {
+            var text;
+            text = "<ol>";
+            for (i = 0; i < searchResults.length; i++) {
+                text += "<li>" + searchResults[i].plassering + "</li>";
+            }
+            text += "</ol>";
+            document.getElementById('liste').innerHTML = text;
+        } else {
+
+            document.getElementById('liste').innerHTML = "Det finnest ingen toaletter med de kriteriumene";
+        }
+
     }
 
+
+function updateMap (dataUrl) {
     var map;
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 60.391011, lng: 5.325950},
@@ -159,8 +186,10 @@ function search(dataUrl) {
         });
     }
 
-
 }
+
+
+
 
 
 

@@ -1,19 +1,56 @@
 var lekeplass = 'https://hotell.difi.no/api/json/bergen/lekeplasser?';
+function startLekeplass() {
+    hentData(lekeplass, lekeplassListe);
+}
 
 
-// en funksjon som henter data ut fra nettet
-function hentData(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (this.status == 200) {
-            var loadData = JSON.parse(this.responseText);
-            callback(loadData);
-        }
-    };
-    xhr.open('GET', url, true);
-    xhr.send();
+function finnleke() {
+
+    hentData(lekeplass, finn);
+}
+
+function kart() {
+    hentData(lekeplass,kart );
 
 }
+
+function drop(){
+    hentData(lekeplass ,functionName);
+}
+
+
+function functionName(data) {
+
+    for (var i = 0; i < data.entries.length; i++) {
+        var select = document.getElementById("Select");
+        var option = document.createElement("option");
+        option.text = data.entries[i].navn;
+        option.value = data.entries[i].navn;
+        select.add(option);
+    }
+
+}
+
+
+
+
+function visFavLeke () {
+
+    document.getElementById('name').textContent = localStorage.getItem('name');
+
+}
+
+
+    function velg() {
+        localStorage.setItem('name', document.getElementById('Select').value);
+        var selectValue = document.getElementById('Select').value;
+        document.getElementById('minFavLekeplass').innerHTML = "min fav er lekeplass er"+ " " + selectValue;
+
+
+    }
+
+
+
 
 
 function lekeplassListe(data) {
@@ -45,20 +82,7 @@ function lekeplassListe(data) {
 // funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 
 
-function startLekeplass() {
-    hentData(lekeplass, lekeplassListe);
-}
 
-
-function finnleke() {
-
-    hentData(lekeplass, finn);
-}
-
-function kart() {
-    hentData(lekeplass,kart );
-
-}
 
 
 function finn(data) {
@@ -107,6 +131,7 @@ function finn(data) {
         var marker = new google.maps.Marker({
             position: latLng,
             map: map,
+            lable:1
 
         });
     }
