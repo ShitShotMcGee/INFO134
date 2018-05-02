@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Lekeplasser</title>
-    <script src="../js/lekeplasser.js"></script>
+    <script src="../js/fav.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/utilities.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
 </head>
-<body onload="visFavLeke()" >
+<body onload="selector(),startLekeplass() " >
 <div class="wrapper">
     <header class="header">
         <!--Header laget av NEH006-->
@@ -21,22 +22,27 @@
                 <li><a href="toalett.html">Toalett</a></li>
                 <li><a href="lekeplass.html">Lekeplasser</a></li>
                 <li><a href="minFavorittLekeplass.html">minFavorittLekeplass</a></li>
-
             </ul>
         </nav>
     </header>
-</div>
+
+    <p> her kan du velge din fav lekeplass </p>
+    <select id="Select"  ></select>
+    <button onclick="myFunction()" > </button>
 
 
-<div>
-   <h1> Min favoritt lekeplass er , <span id="minFavoritt" /> </h1>
-</div>
-
-
-
-
+    <p id="minFavLekeplass"></p>
 
 
 
+
+
+
+
+
+        <footer>
+            <p>Laget av NEH006 og WIZ005</p>
+        </footer>
+    </div>
 </body>
 </html>
