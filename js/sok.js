@@ -117,6 +117,8 @@ function starten() {
 
 function getTimeStart() {
     hentData(link, checktimeHverdag);
+    hentData(link, checktimeLordag);
+    hentData(link, checktimeSondag);
 }
 
 function checktimeHverdag(dataUrl) {
@@ -126,12 +128,14 @@ function checktimeHverdag(dataUrl) {
     var tidString = tid.toString();
     var time = tidString.substr(16, 2);
     var min = tidString.substr(19, 2);
-    var tidCombo = time + min;
+    var lokaltidCombo = time + min;
+
+    var all = /(ALL)/ig;
 
     if (tid.getDay() <= 5) {
-        for (i = 0; i < dataUrl.entries[i].length; i++) {
-            if (dataUrl.entries.tid_hverdag === "ALL") {
-                dataUrl.entries.plassering.push(aapenHverdag);
+        for (i = 0; i < dataUrl.entries.length; i++) {
+            if (dataUrl["entries"][i]["tid_hverdag"].match(all)) {
+                aapenHverdag.push(dataUrl.entries[i]);
             }
             else {
 
@@ -144,19 +148,99 @@ function checktimeHverdag(dataUrl) {
                 var stengTime = hentTidString.substr(8, 2);
                 var stengMin = hentTidString.substr(11, 2);
                 var stengCombo = stengTime + stengMin;
-                var datasetTid = aapenCombo + stengCombo;
+
+                if(aapenCombo < lokaltidCombo && stengCombo > lokaltidCombo){
+                    aapenHverdag.push(dataUrl.entries[i]);
+                }
             }
 
 
         }
     }
 
-    console.log(tidString);
-    console.log(time);
-    console.log(min);
-    console.log(tidCombo);
-    console.log(datasetTid);
     console.log(aapenHverdag);
+
+}
+
+function checktimeLordag(dataUrl) {
+    var aapenLordag = [];
+    //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
+    var tid = new Date();
+    var tidString = tid.toString();
+    var time = tidString.substr(16, 2);
+    var min = tidString.substr(19, 2);
+    var lokaltidCombo = time + min;
+
+    var all = /(ALL)/ig;
+
+    if (tid.getDay() === 6) {
+        for (i = 0; i < dataUrl.entries.length; i++) {
+            if (dataUrl["entries"][i]["tid_lordag"].match(all)) {
+                aapenLordag.push(dataUrl.entries[i]);
+            }
+            else {
+
+                var hentTidString = dataUrl.entries[i].tid_lordag;
+
+                var aapenTime = hentTidString.substr(0, 2);
+                var aapenMin = hentTidString.substr(3, 2);
+                var aapenCombo = aapenTime + aapenMin;
+
+                var stengTime = hentTidString.substr(8, 2);
+                var stengMin = hentTidString.substr(11, 2);
+                var stengCombo = stengTime + stengMin;
+
+                if(aapenCombo < lokaltidCombo && stengCombo > lokaltidCombo){
+                    aapenLordag.push(dataUrl.entries[i]);
+                }
+            }
+
+
+        }
+    }
+
+    console.log(aapenLordag);
+
+}
+
+function checktimeSondag(dataUrl) {
+    var aapenSondag = [];
+    //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
+    var tid = new Date();
+    var tidString = tid.toString();
+    var time = tidString.substr(16, 2);
+    var min = tidString.substr(19, 2);
+    var lokaltidCombo = time + min;
+
+    var all = /(ALL)/ig;
+
+    if (tid.getDay() === 7) {
+        for (i = 0; i < dataUrl.entries.length; i++) {
+            if (dataUrl["entries"][i]["tid_sondag"].match(all)) {
+                aapenSondag.push(dataUrl.entries[i]);
+            }
+            else {
+
+                var hentTidString = dataUrl.entries[i].tid_hverdag;
+
+                var aapenTime = hentTidString.substr(0, 2);
+                var aapenMin = hentTidString.substr(3, 2);
+                var aapenCombo = aapenTime + aapenMin;
+
+                var stengTime = hentTidString.substr(8, 2);
+                var stengMin = hentTidString.substr(11, 2);
+                var stengCombo = stengTime + stengMin;
+
+                if(aapenCombo < lokaltidCombo && stengCombo > lokaltidCombo){
+                    aapenSondag.push(dataUrl.entries[i]);
+                }
+            }
+
+
+        }
+    }
+
+    console.log(aapenSondag);
 
 }
 
