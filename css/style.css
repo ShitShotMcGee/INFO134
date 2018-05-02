@@ -206,9 +206,6 @@ li a:hover {
     display: flex;
 }
 
-#avansert_søk button{
-
-}
 
 #kjaptsøk, #sok {
     background-color: #A8A89F;
@@ -219,6 +216,53 @@ li a:hover {
 
 #rasktsok, #klokkeslett, #makspris{
     border-radius: 5px;
+}
+
+#lekeplass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#lekeplass button {
+    border-radius: 5px;
+    background-color: #A8A89F;
+    border-color: #A8A89F;
+    color: ivory;
+}
+
+#lister {
+    border: solid #9A0002;
+    margin: 1%;
+    padding: 1%;
+    width: 15%;
+    align-content: center;
+    justify-content: center;
+}
+
+#selector{
+    border-bottom: solid #9A0002;
+    padding: 5%;
+}
+
+#selector select{
+    width: 75%;
+    left: 1%;
+}
+
+#finnlekeplass{
+
+    align-content: center;
+    justify-content: center;
+}
+
+#finnlekeplass input{
+
+    width: 70%;
+}
+
+#finnlekeplass h3 {
+    text-align: center;
 }
 
 footer {

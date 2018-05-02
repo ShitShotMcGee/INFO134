@@ -10,7 +10,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
 </head>
-<body onload="selector(),startLekeplass() " >
+<body onload="selector(),startLekeplass() ">
 <div class="wrapper">
     <header class="header">
         <!--Header laget av NEH006-->
@@ -25,28 +25,28 @@
             </ul>
         </nav>
     </header>
-
-    <p> her kan du velge din fav lekeplass </p>
-    <select id="Select" ></select>  
-    <button type="button"  onclick="velg()" > Velg favoritt lekeplass</button>
-
-    <p id="minFavLekeplass"></p>
-
-<p> finn lekeplass </p>
-    <input id="finne" type="text" name="" value=""> </input>
-
-    <button onclick="finnlekeplass()" type="button" name="button">søk</button>
-
-    <p id="listeLekeplass"></p>
-
-    <div id="map">
-
-
+    <div id="lekeplass">
+        <div id="lister">
+            <div id="selector">
+                <h3>Velg din favorittlekeplass: </h3>
+                <select id="Select"></select>
+                <button type="button" onclick="velg()"> Velg</button>
+            </div>
+            <div id="finnlekeplass">
+                <p id="minFavLekeplass"></p>
+                <h3> Finn en lekeplass</h3>
+                <input id="finne" type="text" name="" value=""> </input>
+                <button onclick="finnlekeplass()" type="button" name="button">Søk</button>
+                <p id="listeLekeplass"></p>
+            </div>
+        </div>
+        <div id="map">
+        </div>
 
 
         <footer>
-        <p>Laget av NEH006 og WIZ005</p>
-    </footer>
-</div>
+            <p>Laget av NEH006 og WIZ005</p>
+        </footer>
+    </div>
 </body>
 </html>

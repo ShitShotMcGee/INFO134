@@ -8,7 +8,8 @@ function createList(rom) {
     var text;
     text = "<ul>";
     for (i = 0; i < rom.data.length; i++) {
-        text += "<li>" + rom.data[i].name + "</li>";
+
+            text += "<li>" + rom.data[i].name + "</li>";
     }
     text += "</ol>";
     document.getElementById('liste').innerHTML = text;
