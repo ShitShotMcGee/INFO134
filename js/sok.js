@@ -22,7 +22,7 @@ function start() {
 // avansert søk knappen, som tar in en url og en callback funksjon parameter
 function start2() {
     hentData(link, search);
-    hentData(link, maksPris);
+
 }
 
 function starten() {
@@ -64,38 +64,38 @@ function search(dataUrl) {
     }
     if (skjekkAapen.checked === true) {
         getTimeStart();
+
     }
-
-    if (skjekkGratis.checked === true) {
-        searchObj.pris = "0";
-    }
-    // if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked === false &&
-    //     skjekkStellerom.checked === false && skjekkAapen.checked === false && skjekkGratis.checked === false) {
-    //     alert(" Ingenting er markert, du må markere en box  ")
-    // }
-    check(dataUrl);
-    updateToalett();
-    updateMap();
-
-}
-
-
-function maksPris(dataUrl) {
-    var maxPrisListe = [];
-    var input = document.getElementById('makspris').value;
-    var inputPris = (/[0-9]+/).exec(input);
-    for (i = 0; i < dataUrl.entries.length; i++) {
-        var prisTilInt = dataUrl.entries[i].pris;
-        var prisInt = parseInt(prisTilInt);
-        if (prisInt <= inputPris) {
-            maxPrisListe.push(dataUrl.entries[i]);
+        if (skjekkGratis.checked === true) {
+            searchObj.pris = "0";
         }
-        if (prisTilInt === "NULL") {
-            maxPrisListe.push(dataUrl.entries[i]);
-        }
+        // if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked === false &&
+        //     skjekkStellerom.checked === false && skjekkAapen.checked === false && skjekkGratis.checked === false) {
+        //     alert(" Ingenting er markert, du må markere en box  ")
+        // }
+        check(dataUrl);
+        updateToalett();
+        updateMap();
+
     }
-    searchObj.makspris = maxPrisListe;
-}
+
+
+    function maksPris(dataUrl) {
+        var maxPrisListe = [];
+        var input = document.getElementById('makspris').value;
+        var inputPris = (/[0-9]+/).exec(input);
+        for (i = 0; i < dataUrl.entries.length; i++) {
+            var prisTilInt = dataUrl.entries[i].pris;
+            var prisInt = parseInt(prisTilInt);
+            if (prisInt <= inputPris) {
+                maxPrisListe.push(dataUrl.entries[i]);
+            }
+            if (prisTilInt === "NULL") {
+                maxPrisListe.push(dataUrl.entries[i]);
+            }
+        }
+        searchObj.makspris = maxPrisListe;
+    }
 
 
 function check(dataUrl) {
@@ -162,7 +162,8 @@ function checktimeHverdag(dataUrl) {
             }
         }
         console.log(aapenHverdag)
-        searchObj.aapen = aapenHverdag;
+        searchObj.tid_hverdag = lokaltidCombo;
+        console.log(searchObj);
     }
 }
 

@@ -1,4 +1,6 @@
 var lekeplass = 'https://hotell.difi.no/api/json/bergen/lekeplasser?';
+var dass = 'https://hotell.difi.no/api/json/bergen/dokart?';
+
 function selector(){
     hentData(lekeplass ,selectCreateor);
 }
@@ -10,9 +12,55 @@ function selectCreateor(data) {
         var option = document.createElement("option");
         option.text = data.entries[i].navn;
         option.value = data.entries[i].navn;
-
         select.add(option);
     }
+
+
+}
+
+
+
+
+function selector1(){
+    hentData(lekeplass ,myFunction);
+}
+
+
+
+function selector2(){
+    hentData(dass ,sammen);
+}
+function sammen(dataUrl) {
+
+    for (var i = 0; i < dataUrl.entries.length; i++) {
+        lat2 = dataUrl.entries[i].latitude;
+        lng2 = dataUrl.entries[i].longitude;
+        var a = lat1 - lng1;
+        var b =  lat2- lng2;
+
+        var c = Math.sqrt( a*a + b*b );
+
+
+
+        var d = Math.min(c);
+
+
+    }
+
+    console.log(d);
+
+}
+
+var lat2 = "";
+var lng2 ="";
+var lat1 = "";
+var lng1 ="";
+
+
+function visNermeste () {
+    selector1();
+
+
 
 }
 
@@ -22,39 +70,34 @@ function selectCreateor(data) {
 function myFunction(dataUrl) {
     var x = document.getElementById("Select").selectedIndex;
     var y = document.getElementById("Select").options;
-    document.getElementById("minFavLekeplass").innerHTML= "Index: " + y[x].index + " is " + y[x].text;
+    document.getElementById("minFavLekeplass").innerHTML = "Index: " + y[x].index + " is " + y[x].text;
 
 
-    for(var i=0; i < dataUrl.entries.length; i++) {
+    for (var i = 0; i < dataUrl.entries.length; i++) {
 
 
-        if(dataUrl.entries[i].navn === y[x].text) {
+        if (dataUrl.entries[i].navn === y[x].text) {
 
-           var lat = dataUrl.entries[i].latitude;
-            var lng = dataUrl.entries[i].longitude;
+            lat1 = dataUrl.entries[i].latitude;
+            lng1 = dataUrl.entries[i].longitude;
 
         }
-//ss
-
-
-
-        var a = lat - lng;
-        var b = y1 - y2;
-
-        var c = Math.sqrt( a*a + b*b );
-
-// c is the distance
 
 
     }
-
-
-
-
-
+    console.log(lat1);
+    console.log(lng1);
 
 
 }
+
+
+
+
+
+
+
+
 
 
 
