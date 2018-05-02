@@ -104,3 +104,7 @@ function updateLekeplass () {
 
 
 }
+
+function calcDistance() {
+    
+}
