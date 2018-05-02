@@ -15,7 +15,7 @@ function loadListe(data) {
 // funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 function start() {
     hentData(link, loadListe);
-    hentData( link,initMap  )
+    hentData(link, initMap)
 
 }
 
@@ -29,7 +29,7 @@ var searchObj = {};
 
 // avansert søk funksjonen
 function search(dataUrl) {
-     searchResults = [];
+    searchResults = [];
     searchObj = {};
     var skjekkHerre = document.getElementById('herre');
     var skjekkDame = document.getElementById('dame');
@@ -51,71 +51,17 @@ function search(dataUrl) {
     if (skjekkStellerom.checked === true) {
         searchObj.stellerom = "1";
     }
-    if (skjekkAapen.checked ===true) {
-        var date = new Date();
-        var arrHverdag = [];
-        var arrLordag = [];
-        var arrSondag = [];
-        var arrHverdagAapen = [];
-        var arrHverdagSteng = [];
-        var arrLordagAapen = [];
-        var arrLordagSteng = [];
-        var arrSondagAapen = [];
-        var arrSondagSteng = [];
-
-        if (date.getDay() <= 5) {
-            for (i = 0; i < dataUrl.entries.length; i++) {
-                var list = dataUrl.entries[i].tid_hverdag;
-                arrHverdag.push(list.split("-"));
-            }
-            console.log(arrHverdag);
-            for (i = 0; i < arrHverdag.length; i++) {
-                arrHverdagAapen.push(parseFloat(arrHverdag[i][0]));
-                arrHverdagSteng.push(parseFloat(arrHverdag[i][1]));
-            }
-            console.log(arrHverdagAapen, arrHverdagSteng);
-
-            if (date.getHours() >= arrHverdagAapen && date.getHours() <= arrHverdagSteng) {
-
-            }
-            console.log(searchObj.aapen);
-        }
-
-
-        if (date.getDay() === 6) {
-            for (x = 0; x < dataUrl.entries.length; x++) {
-                let list = dataUrl.entries[i].tid_lordag;
-                arrLordag.push(list.split("-"));
-            }
-            for (i = 0; i < arrLordag.length; i++) {
-                arrLordagAapen.push(parseFloat(arrLordag[i][0]));
-                arrLordagSteng.push(parseFloat(arrLordag[i][1]));
-            }
-        }
-
-        if (date.getDay() === 7) {
-            for (i = 0; i < dataUrl.entries.length; i++) {
-                let list = dataUrl.entries[i].tid_sondag;
-                arrSondag.push(list.split("-"));
-            }
-            for (i = 0; i < arrSondag.length; i++) {
-                arrSondagAapen.push(parseFloat(arrSondag[i][0]));
-                arrSondagSteng.push(parseFloat(arrSondag[i][1]));
-            }
-        }
-
+    if (skjekkAapen.checked === true) {
+        getTimeStart();
     }
 
-
-
-    if (skjekkGratis.checked ===true) {
-        searchObj.pris = "0" ;
+    if (skjekkGratis.checked === true) {
+        searchObj.pris = "0";
     }
-    if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked ===false &&
+    if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked === false &&
         skjekkStellerom.checked === false && skjekkAapen.checked === false && skjekkGratis.checked === false) {
         alert(" Ingenting er markert, du må markere en box  ")
     }
-
 
 
     check(dataUrl);
@@ -125,52 +71,94 @@ function search(dataUrl) {
 }
 
 
+function check(dataUrl) {
 
-    function check (dataUrl) {
 
-
-        var searchParam = Object.keys(searchObj);
-        for (i = 0; i < dataUrl.entries.length; i++) {
-            var truthChecker = 0;
-            for (x = 0; x < searchParam.length; x++) {
-                if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
-                    truthChecker++;
-                }
-
+    var searchParam = Object.keys(searchObj);
+    for (i = 0; i < dataUrl.entries.length; i++) {
+        var truthChecker = 0;
+        for (x = 0; x < searchParam.length; x++) {
+            if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
+                truthChecker++;
             }
-            if (truthChecker === searchParam.length) {
-                searchResults.push(dataUrl.entries[i]);
-            }
-
 
         }
+        if (truthChecker === searchParam.length) {
+            searchResults.push(dataUrl.entries[i]);
+        }
+
 
     }
 
-    function updateToalett  () {
+}
 
-        if (searchResults.length > 0) {
-            var text;
-            text = "<ol>";
-            for (i = 0; i < searchResults.length; i++) {
-                text += "<li>" + searchResults[i].plassering + "</li>";
-            }
-            text += "</ol>";
-            document.getElementById('liste').innerHTML = text;
-        } else {
+function updateToalett() {
 
-            document.getElementById('liste').innerHTML = "Det finnest ingen toaletter med de kriteriumene";
+    if (searchResults.length > 0) {
+        var text;
+        text = "<ol>";
+        for (i = 0; i < searchResults.length; i++) {
+            text += "<li>" + searchResults[i].plassering + "</li>";
         }
+        text += "</ol>";
+        document.getElementById('liste').innerHTML = text;
+    } else {
 
+        document.getElementById('liste').innerHTML = "Det finnest ingen toaletter med de kriteriumene";
     }
 
+}
 
 
-
-    function starten() {
+function starten() {
     hentData(link, hurtigsok);
 
+}
+
+function getTimeStart() {
+    hentData(link, checktimeHverdag);
+}
+
+function checktimeHverdag(dataUrl) {
+    var aapenHverdag = [];
+    //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
+    var tid = new Date();
+    var tidString = tid.toString();
+    var time = tidString.substr(16, 2);
+    var min = tidString.substr(19, 2);
+    var tidCombo = time + min;
+
+    if (tid.getDay() <= 5) {
+        for (i = 0; i < dataUrl.entries[i].length; i++) {
+            if (dataUrl.entries.tid_hverdag === "ALL") {
+                dataUrl.entries.plassering.push(aapenHverdag);
+            }
+            else {
+
+                var hentTidString = dataUrl.entries[i].tid_hverdag;
+
+                var aapenTime = hentTidString.substr(0, 2);
+                var aapenMin = hentTidString.substr(3, 2);
+                var aapenCombo = aapenTime + aapenMin;
+
+                var stengTime = hentTidString.substr(8, 2);
+                var stengMin = hentTidString.substr(11, 2);
+                var stengCombo = stengTime + stengMin;
+                var datasetTid = aapenCombo + stengCombo;
+            }
+
+
+        }
     }
+
+    console.log(tidString);
+    console.log(time);
+    console.log(min);
+    console.log(tidCombo);
+    console.log(datasetTid);
+    console.log(aapenHverdag);
+
+}
 
 
 function hurtigsok(dataUrl) {
@@ -182,8 +170,6 @@ function hurtigsok(dataUrl) {
     var rullestol = /(rullestol)/i;
     var stelle = /(stellerom)/i;
     var gratis = /(gratis)/i;
-    var regexPlassering = /([A-Z])\w+/g;
-
 
     if (herre.test(rasktsok.value)) {
         searchObj.herre = "1";
