@@ -176,31 +176,31 @@ function search(dataUrl) {
 function hurtigsok(dataUrl) {
     searchObj = {};
     searchResults = [];
-    var regexOpen = /(open)|(Ã¥pen)/i;
-    var regexherre = /(herre)|(male)|(boy)|(gutt)|(men)/i;
-    var regexDame = /(dame)|(female)|(girl)|(jente)|(lady)/i;
-    var regexRullestol = /(rullestol)|(wheelchair)|(handicapped)/i;
-    var regexStelle = /(stellerom)|(changingroom)|(Nursery)/i;
-    var regexGratis = /(gratis)|(free)/i;
+    var aappen = /(åpen)/i;
+    var herre = /(herre)||(gutt)/i;
+    var dame = /(dame)|(jente)/i;
+    var rullestol = /(rullestol)/i;
+    var stelle = /(stellerom)/i;
+    var gratis = /(gratis)/i;
 
 
 
-    if (regexherre.test(rasktsok.value)) {
+    if (herre.test(rasktsok.value)) {
         searchObj.herre = "1";
     }
-    if (regexDame.test(rasktsok.value)) {
+    if (dame.test(rasktsok.value)) {
         searchObj.dame = "1";
     }
-    if (regexRullestol.test(rasktsok.value)) {
+    if (rullestol.test(rasktsok.value)) {
         searchObj.rullestol = "1";
     }
-    if (regexStelle.test(rasktsok.value)) {
+    if (stelle.test(rasktsok.value)) {
         searchObj.stellerom = "1";
     }
-    if (regexGratis.test(rasktsok.value)) {
+    if (gratis.test(rasktsok.value)) {
         searchObj.pris = "0";
     }
-    if (regexOpen.test(rasktsok.value)) {
+    if (aappen.test(rasktsok.value)) {
 
     }
 
