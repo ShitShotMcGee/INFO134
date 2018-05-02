@@ -9,40 +9,36 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
+    <meta name="viewport" content="initial-scale=1.0">
 </head>
-<body onload="selector(),startLekeplass() " >
+<body onload="selector(),startLekeplass() ">
 <div class="wrapper">
     <header class="header">
         <!--Header laget av NEH006-->
         <h1>Bergen By</h1>
         <nav>
-            <ul>
+            <ul class="navbar">
                 <li><a href="../index.html">Startside</a></li>
                 <li><a href="gjøremål.html">Gjøremål</a></li>
-                <li><a href="toalett.html">Toalett</a></li>
+                <li><a href="toalett.html">Toaletter</a></li>
                 <li><a href="lekeplass.html">Lekeplasser</a></li>
-                <li><a href="minFavorittLekeplass.html">minFavorittLekeplass</a></li>
+                <li><a href="minFavorittLekeplass.html">Min Favorittlekeplass</a></li>
             </ul>
         </nav>
     </header>
-
-    <p> her kan du velge din fav lekeplass </p>
-    <select id="Select"  ></select>
-    <button onclick="myFunction()" > </button>
-
-
-    <p id="minFavLekeplass"></p>
-
-
-
-
-
-
-
-
-        <footer>
-            <p>Laget av NEH006 og WIZ005</p>
-        </footer>
+    <div id="favLeke">
+        <div id="favContainer">
+            <h2>Velg din favorittlekeplass</h2>
+            <select id="Select"></select>
+            <button type="button" name="favLekeButton" onclick="myFunction()">Velg</button>
+        </div>
+        <div id="favpContainer">
+            <p id="minFavLekeplass"></p>
+        </div>
     </div>
+    <footer>
+        <p>Laget av NEH006 og WIZ005</p>
+    </footer>
+</div>
 </body>
 </html>
