@@ -20,7 +20,8 @@ function selectCreateor(data) {
         var select = document.getElementById("Select");
         var option = document.createElement("option");
         option.text = data.entries[i].navn;
-        option.value = data.entries[i].navn;
+        option.value = data.entries[i];
+
         select.add(option);
     }
 
@@ -35,11 +36,21 @@ function visFavLeke () {
 
     function velg() {
         localStorage.setItem('name', document.getElementById('Select').value);
-        var selectValue = document.getElementById('Select').value;
+        var selectValue = function show(ele) {
+            // GET THE SELECTED VALUE FROM <select> ELEMENT AND SHOW IT.
+            var msg = document.getElementById('Select');
+            msg.innerHTML = 'Selected Bird: <b>' + ele.options[ele.selectedIndex].text + '</b> </br>' +
+                'ID: <b>' + ele.value + '</b>';
+        };
         document.getElementById('minFavLekeplass').innerHTML = "min fav er lekeplass er"+ " " + selectValue;
 
 
     }
+
+
+
+
+
 
 
 

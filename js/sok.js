@@ -184,9 +184,6 @@ function hurtigsok(dataUrl) {
     var gratis = /(gratis)/i;
     var regexPlassering = /([A-Z])\w+/g;
 
-    if (regexPlassering.test(rasktsok.value) === dataUrl.entries.plassering.match(/([A-Z])\w+/g)){
-        dataUrl.entries.plassering.push(searchObj);
-    }
 
     if (herre.test(rasktsok.value)) {
         searchObj.herre = "1";
