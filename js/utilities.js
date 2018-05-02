@@ -15,18 +15,6 @@ function hentData(url, callback) {
 }
 
 
-function hentFlydata(url, callback) {
-    var xmlxhr = new XMLHttpRequest();
-    xmlxhr.onload = function() {
-        if(this.status === 200) {
-            var loadxml = xml.responseXML;
-            callback(loadxml);
-        }
-    };
-    xhr.open('GET', url, true);
-    xhr.send();
-}
-
 //Javascript tilhørende Slideshow. Laget av Wiz005
 var slideIndex = 0;
 showSlides();

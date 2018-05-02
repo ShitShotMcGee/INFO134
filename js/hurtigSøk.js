@@ -1,3 +1,10 @@
+window.onload = function () {
+    tekstfelt = document.getElementById('rasktsok');
+    document.getElementById('searchbutton').addEventListener("click", hurtigSøk);
+}
+
+var hurtigsokList = [];
+
 function hurtigSøk() {
     var kjaptsok = document.getElementById("rasktsok").value;
     var result = [];
@@ -8,6 +15,13 @@ function hurtigSøk() {
     var stellerom = /(stellerom)/i;
     var gratis = /(gratis)/i;
 
+    if(dame.test(tekstfelt.value)){
+        hurtigsokList.dame = "1";
+    }
+
+    if(herre.test(rullestol.value)){
+        hurtigsokList.rullestol = "1";
+    }
 
 }
 
