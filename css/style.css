@@ -142,25 +142,59 @@ li a:hover {
     justify-content: center;
     flex-wrap: wrap;
 
+
 }
 
 #hurtigsøk{
     display: flex;
     height: 7%;
+    border-bottom: solid #9A0002;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+}
+
+#sokogliste {
+    margin-top: 2rem;
+    width: 17%;
+    align-items: center;
+    justify-content: center;
 }
 
 #avansert_søk {
     margin: 2%;
     display: flex;
-    width: 40%;
+    justify-content: center;
     flex-direction: column;
+    border: solid #9A0002;
+    padding: 1%;
+    width: 100%;
+}
 
+#avansert_søk h2{
+    text-align: center;
+}
+
+#avansert_søktxt {
+    text-align: center;
+    padding-bottom: 1%;
+    margin-bottom: 1%;
+}
+
+#genListe{
+    margin: 2%;
+    border: solid #9A0002;
+    padding: 1%;
+    width: 100%;
+}
+
+#genListe h2{
+    text-align: center;
 }
 
 #map {
     margin: 2%;
-    width: 50rem;
-    height: 20rem;
+    width: 75%;
+    height: 45rem;
 }
 
 #liste {
@@ -170,6 +204,21 @@ li a:hover {
 
 #lekeplassliste {
     display: flex;
+}
+
+#avansert_søk button{
+
+}
+
+#kjaptsøk, #sok {
+    background-color: #A8A89F;
+    color: ivory;
+    border-radius: 5px;
+    border-color: #A8A89F;
+}
+
+#rasktsok, #klokkeslett, #makspris{
+    border-radius: 5px;
 }
 
 footer {
@@ -190,158 +239,3 @@ footer p {
 
 }
 
-@media handheld and (max-width: 568px) {
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: auto;
-        font-family: 'Fjalla One', sans-serif;
-        background: ivory;
-
-    }
-
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    #header {
-        background-color: #9A0002;
-        margin: auto;
-        width: 100%;
-    }
-
-    #header h1 {
-        margin: auto;
-        text-align: center;
-        color: ivory;
-        font-size: 3.125em;
-    }
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #9A0002;
-
-    }
-
-    li {
-        float: left;
-    }
-
-    li a {
-        display: block;
-        color: ivory;
-        text-align: center;
-        padding: 2px 16px;
-        text-decoration: none;
-        font-size: 3vh;
-    }
-
-    li a:hover {
-        background-color: #111;
-    }
-
-    .rad {
-        display: flex;
-        padding-top: 5rem;
-        padding-left: 2rem;
-        justify-content: space-around;
-    }
-
-    .flex-container {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        max-width: 47rem;
-
-    }
-
-    .flex-image img {
-        max-width: 95%;
-        height: auto;
-        justify-content: center;
-    }
-
-    .flex-text {
-        display: flex;
-        flex: 1;
-        max-width: 50%;
-        flex-direction: column;
-
-    }
-
-    .flex-text h2 {
-        text-align: center;
-    }
-
-    #slideshow {
-        height: auto;
-        width: 100vw;
-
-    }
-
-    .image_container {
-        max-width: 100vw;
-        position: relative;
-        top: 5vh;
-
-        margin: auto;
-    }
-
-    .image_container img {
-        width: 55vw;
-        float: right;
-
-    }
-
-    .slides {
-        display: none;
-    }
-
-    .text {
-        max-width: 50vh;
-        position: absolute;
-        top: 7.5vh;
-        left: 7.5vw;
-        color: #9A0002;
-        font-size: 10vh;
-        text-align: center;
-
-    }
-
-    #show {
-        display: flex;
-
-    }
-
-    #map {
-        height: 45vh;
-        width: 100%;
-        margin: auto;
-    }
-
-    footer {
-        background-color: #9A0002;
-        bottom: 0;
-        height: 4vh;
-        width: 100%;
-        text-align: center;
-        position: fixed;
-        padding-bottom: 50px;
-
-    }
-
-    footer p {
-        color: ivory;
-        font-size: 3vh;
-        margin-top: 1.5vh;
-    }
-}
