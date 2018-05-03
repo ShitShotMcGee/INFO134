@@ -10,7 +10,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
 </head>
-<body onload="selector()">
+<body onload="selector(),visNermeste()">
 <div class="wrapper">
     <header class="header">
         <!--Header laget av NEH006-->
@@ -27,9 +27,9 @@
     </header>
 
     <p> her kan du velge din fav lekeplass </p>
-    <select id="Select"></select>
+    <select id="Select"  ></select>
     <button onclick="visNermeste()" > velg fav lekeplass  </button>
-<button onclick="selector2()" > </button>
+    <button onclick="selector3()" > velg fav   </button>
 
 
     <p id="minFavLekeplass"></p>

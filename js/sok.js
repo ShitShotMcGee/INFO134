@@ -102,14 +102,14 @@ function check(dataUrl) {
 
 
     var searchParam = Object.keys(searchObj);
-    for (i = 0; i < dataUrl.entries.length; i++) {
-        var truthChecker = 0;
-        for (x = 0; x < searchParam.length; x++) {
+    for (var i = 0; i < dataUrl.entries.length; i++) {
+        var Checker = 0;
+        for (var x = 0; x < searchParam.length; x++) {
             if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
-                truthChecker++;
+                Checker++;
             }
         }
-        if (truthChecker === searchParam.length) {
+        if (Checker === searchParam.length) {
             searchResults.push(dataUrl.entries[i]);
         }
     }
@@ -119,7 +119,7 @@ function updateToalett() {
     if (searchResults.length > 0) {
         var text;
         text = "<ol>";
-        for (i = 0; i < searchResults.length; i++) {
+        for (var i = 0; i < searchResults.length; i++) {
             text += "<li>" + searchResults[i].plassering + "</li>";
         }
         text += "</ol>";
