@@ -10,12 +10,6 @@ function sortNummer() {
     hentData(link,sortStørrelse );
 }
 
-function sortAlfa() {
-    hentData(link,sortAlfabetisk );
-
-}
-
-
 
 
 function createList(rom) {
@@ -41,17 +35,6 @@ function sortStørrelse (rom) {
     updateListeRom();
 
 }
-
-
-
-
-function sortAlfabetisk (rom) {
-
-
-
-
-}
-
 
 
 

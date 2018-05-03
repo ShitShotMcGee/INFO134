@@ -1,7 +1,7 @@
 // link til json data fra en url
 var link = 'https://hotell.difi.no/api/json/bergen/dokart?';
 
-
+// laster in listen på siden(html).
 function loadListe(data) {
     var text;
     text = "<ol>";
@@ -68,7 +68,8 @@ function search(dataUrl) {
         if (skjekkGratis.checked === true) {
             searchObj.pris = "0";
         }
-        // if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked === false &&
+        //
+       //if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked === false &&
         //     skjekkStellerom.checked === false && skjekkAapen.checked === false && skjekkGratis.checked === false) {
         //     alert(" Ingenting er markert, du må markere en box  ")
         // }
@@ -97,23 +98,22 @@ function search(dataUrl) {
     }
 
 
+//checker om stemmer med searchObj og legger den til i searchresult
 function check(dataUrl) {
-
-
-    var searchParam = Object.keys(searchObj);
+    var search = Object.keys(searchObj);
     for (var i = 0; i < dataUrl.entries.length; i++) {
         var Checker = 0;
-        for (var x = 0; x < searchParam.length; x++) {
-            if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
+        for (var x = 0; x < search.length; x++) {
+            if (dataUrl.entries[i][search[x]] === searchObj[search[x]]) {
                 Checker++;
             }
         }
-        if (Checker === searchParam.length) {
+        if (Checker === search.length) {
             searchResults.push(dataUrl.entries[i]);
         }
     }
 }
-
+// update listen toalett .
 function updateToalett() {
     if (searchResults.length > 0) {
         var text;
@@ -208,6 +208,7 @@ function checkTime(dataUrl) {
     return aapen;
 }
 
+// bruker regex til å sjekke om input stemmer med regex
 function hurtigsok(dataUrl) {
     searchObj = {};
     searchResults = [];

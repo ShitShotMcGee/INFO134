@@ -1,16 +1,18 @@
 var lekeplass = 'https://hotell.difi.no/api/json/bergen/lekeplasser?';
 
+// funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
+// og laster in kart på siden.
 function startLekeplass() {
     hentData(lekeplass, lekeplassListe);
     hentData(lekeplass, initMap)
 }
 
-function finnlekeplass() {
 
+function finnlekeplass() {
     hentData(lekeplass, finn);
 }
 
-
+// lager listen på siden.
 function lekeplassListe(data) {
     var text;
     text = "<ol>";
@@ -22,37 +24,41 @@ function lekeplassListe(data) {
 
 }
 
-// funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 
 
+// global liste, slik den kan bli brukt i andre funksjoner .
 var searchResults = [];
 
+// funksjon som brukest til å søke i listen med value som er i input.
 function finn(dataUrl) {
-    searchResults = [];
+    searchResults = []; // tømmer searchResults
     check(dataUrl);
 
     updateLekeplass();
     updateMap();
 }
 
+
+//checker om input.value stemmer med searchObj
 function check(dataUrl) {
     var sjekk = document.getElementById('finne');
     var searchObj = {"navn": sjekk.value};
-    var searchParam = Object.keys(searchObj);
+    var search = Object.keys(searchObj);
     for (var i = 0; i < dataUrl.entries.length; i++) {
         var checker = 0;
-        for (var x = 0; x < searchParam.length; x++) {
-            if (dataUrl.entries[i][searchParam[x]] === searchObj[searchParam[x]]) {
+        for (var x = 0; x < search.length; x++) {
+            if (dataUrl.entries[i][search[x]] === searchObj[search[x]]) {
                 checker++;
             }
 
         }
-        if (checker === searchParam.length) {
+        if (checker === search.length) {
             searchResults.push(dataUrl.entries[i]);
         }
     }
 }
 
+// opptaderer lekeplass listen
 function updateLekeplass() {
 
     if (searchResults.length > 0) {

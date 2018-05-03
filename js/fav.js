@@ -1,17 +1,18 @@
+// link for å hente in lekeplasser
 var lekeplass = 'https://hotell.difi.no/api/json/bergen/lekeplasser?';
+// link for å hente in toalett
 var toalett = 'https://hotell.difi.no/api/json/bergen/dokart?';
 
+//brukest til data og kjører funksjon selectCreateor1()
 function selectorOption1(){
     hentData(lekeplass ,selectCreateor1);
 }
 
-
-
-//brukest til å hente data
+//brukest til data og kjører funksjon velg()
 function selector1(){
     hentData(lekeplass ,velg);
 }
-//brukest til å hente data
+//brukest til data og kjører funksjon sammen()
 function selector2(){
     hentData(toalett,sammen);
 }
@@ -27,10 +28,8 @@ function selectCreateor1(data) {
     }
 }
 
-
+// går igjennom toalett liste og sett er lat2 og lng2
 function sammen(dataUrl) {
-var listl = [];
-
     for (var i = 0; i < dataUrl.entries.length; i++) {
         lat2 = dataUrl.entries[i].latitude;
         lng2 = dataUrl.entries[i].longitude;
@@ -38,23 +37,23 @@ var listl = [];
         var b =  lat2- lng2;
         var a = lat1 - lng1;
         var c = Math.sqrt( a*a + b*b );
-        listl.push(c);
+        Math.min(null,c);
 
     }
+}
 
-    }
-
+// variabler så det går an å bruke dem i flere metoder
 var lat2 ;
 var lng2 ;
 var lat1 ;
 var lng1;
 
 
+// funksjon som tar in selector2() og mapmap() å viser nermeste toalett
+
 function visNermeste () {
-    selector1();
     selector2();
     mapmap();
-
 
 }
 
