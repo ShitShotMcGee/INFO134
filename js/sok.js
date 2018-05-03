@@ -31,8 +31,9 @@ function starten() {
 }
 
 function getTimeStart() {
-    hentData(link, checkTime);
-
+    hentData(link, checktimeHverdag);
+    hentData(link, checktimeLordag);
+    hentData(link, checktimeSondag);
 }
 
 var searchResults = [];
@@ -65,36 +66,36 @@ function search(dataUrl) {
         getTimeStart();
 
     }
-    if (skjekkGratis.checked === true) {
-        searchObj.pris = "0";
-    }
-    // if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked === false &&
-    //     skjekkStellerom.checked === false && skjekkAapen.checked === false && skjekkGratis.checked === false) {
-    //     alert(" Ingenting er markert, du må markere en box  ")
-    // }
-    check(dataUrl);
-    updateToalett();
-    updateMap();
-
-}
-
-
-function maksPris(dataUrl) {
-    var maxPrisListe = [];
-    var input = document.getElementById('makspris').value;
-    var inputPris = (/[0-9]+/).exec(input);
-    for (i = 0; i < dataUrl.entries.length; i++) {
-        var prisTilInt = dataUrl.entries[i].pris;
-        var prisInt = parseInt(prisTilInt);
-        if (prisInt <= inputPris) {
-            maxPrisListe.push(dataUrl.entries[i]);
+        if (skjekkGratis.checked === true) {
+            searchObj.pris = "0";
         }
-        if (prisTilInt === "NULL") {
-            maxPrisListe.push(dataUrl.entries[i]);
-        }
+        // if (skjekkHerre.checked === false && skjekkDame.checked === false && skjekkRullestol.checked === false &&
+        //     skjekkStellerom.checked === false && skjekkAapen.checked === false && skjekkGratis.checked === false) {
+        //     alert(" Ingenting er markert, du må markere en box  ")
+        // }
+        check(dataUrl);
+        updateToalett();
+        updateMap();
+
     }
-    searchObj.makspris = maxPrisListe;
-}
+
+
+    function maksPris(dataUrl) {
+        var maxPrisListe = [];
+        var input = document.getElementById('makspris').value;
+        var inputPris = (/[0-9]+/).exec(input);
+        for (i = 0; i < dataUrl.entries.length; i++) {
+            var prisTilInt = dataUrl.entries[i].pris;
+            var prisInt = parseInt(prisTilInt);
+            if (prisInt <= inputPris) {
+                maxPrisListe.push(dataUrl.entries[i]);
+            }
+            if (prisTilInt === "NULL") {
+                maxPrisListe.push(dataUrl.entries[i]);
+            }
+        }
+        searchObj.makspris = maxPrisListe;
+    }
 
 
 function check(dataUrl) {
@@ -128,8 +129,8 @@ function updateToalett() {
     }
 }
 
-function checkTime(dataUrl) {
-    var aapen = [];
+function checktimeHverdag(dataUrl) {
+    var aapenHverdag = [];
     //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
     var tid = new Date();
     var tidString = tid.toString();
@@ -160,52 +161,83 @@ function checkTime(dataUrl) {
                 }
             }
         }
+        console.log(aapenHverdag)
+        searchObj.tid_hverdag = lokaltidCombo;
+        console.log(searchObj);
     }
+}
+//
+
+function checktimeLordag(dataUrl) {
+    var aapenLordag = [];
+    //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
+    var tid = new Date();
+    var tidString = tid.toString();
+    var time = tidString.substr(16, 2);
+    var min = tidString.substr(19, 2);
+    var lokaltidCombo = time + min;
+
+    var all = /(ALL)/ig;
+
     if (tid.getDay() === 6) {
         for (i = 0; i < dataUrl.entries.length; i++) {
             if (dataUrl["entries"][i]["tid_lordag"].match(all)) {
-                aapen.push(dataUrl.entries[i]);
+                aapenLordag.push(dataUrl.entries[i]);
             }
             else {
-                var lorHentTidString = dataUrl.entries[i].tid_hverdag;
+                var hentTidString = dataUrl.entries[i].tid_lordag;
 
-                var lorAapenTime = lorHentTidString.substr(0, 2);
-                var lorAapenMin = lorHentTidString.substr(3, 2);
-                var lorAapenCombo = lorAapenTime + lorAapenMin;
+                var aapenTime = hentTidString.substr(0, 2);
+                var aapenMin = hentTidString.substr(3, 2);
+                var aapenCombo = aapenTime + aapenMin;
 
-                var lorStengTime = lorHentTidString.substr(8, 2);
-                var lorStengMin = lorHentTidString.substr(11, 2);
-                var lorStengCombo = lorStengTime + lorStengMin;
+                var stengTime = hentTidString.substr(8, 2);
+                var stengMin = hentTidString.substr(11, 2);
+                var stengCombo = stengTime + stengMin;
 
-                if (lorSapenCombo < lokaltidCombo && lorStengCombo > lokaltidCombo) {
-                    aapen.push(dataUrl.entries[i]);
+                if (aapenCombo < lokaltidCombo && stengCombo > lokaltidCombo) {
+                    aapenLordag.push(dataUrl.entries[i]);
                 }
             }
         }
+        searchObj.aapen = aapenLordag;
     }
-    if (tid.getDay() === 0) {
+}
+
+function checktimeSondag(dataUrl) {
+    var aapenSondag = [];
+    //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
+    var tid = new Date();
+    var tidString = tid.toString();
+    var time = tidString.substr(16, 2);
+    var min = tidString.substr(19, 2);
+    var lokaltidCombo = time + min;
+
+    var all = /(ALL)/ig;
+
+    if (tid.getDay() === 7) {
         for (i = 0; i < dataUrl.entries.length; i++) {
             if (dataUrl["entries"][i]["tid_sondag"].match(all)) {
-                aapen.push(dataUrl.entries[i]);
+                aapenSondag.push(dataUrl.entries[i]);
             }
             else {
-                var sonHentTidString = dataUrl.entries[i].tid_hverdag;
+                var hentTidString = dataUrl.entries[i].tid_hverdag;
 
-                var sonAapenTime = sonHentTidString.substr(0, 2);
-                var sonAapenMin = sonHentTidString.substr(3, 2);
-                var sonAapenCombo = sonAapenTime + sonAapenMin;
+                var aapenTime = hentTidString.substr(0, 2);
+                var aapenMin = hentTidString.substr(3, 2);
+                var aapenCombo = aapenTime + aapenMin;
 
-                var sonStengTime = sonHentTidString.substr(8, 2);
-                var sonStengMin = sonHentTidString.substr(11, 2);
-                var sonStengCombo = sonStengTime + sonStengMin;
+                var stengTime = hentTidString.substr(8, 2);
+                var stengMin = hentTidString.substr(11, 2);
+                var stengCombo = stengTime + stengMin;
 
-                if (sonAapenCombo < lokaltidCombo && sonStengCombo > lokaltidCombo) {
-                    aapen.push(dataUrl.entries[i]);
+                if (aapenCombo < lokaltidCombo && stengCombo > lokaltidCombo) {
+                    aapenSondag.push(dataUrl.entries[i]);
                 }
             }
         }
+        searchObj.aapen = aapenSondag;
     }
-    return aapen;
 }
 
 function hurtigsok(dataUrl) {

@@ -18,7 +18,6 @@ function selectCreateor(data) {
 
 }
 
-
 function selector1(){
     hentData(lekeplass ,myFunction);
 }
@@ -59,42 +58,21 @@ var lng1;
 
 
 function visNermeste () {
-
-
     selector1();
     selector2();
-
-
     mapmap();
-
-
     console.log(lat1);
     console.log(lng1);
     console.log(lat2);
     console.log(lng2);
 
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
 
 function myFunction(dataUrl) {
 
     var x = document.getElementById("Select").selectedIndex;
     var y = document.getElementById("Select").options;
-    document.getElementById("minFavLekeplass").innerHTML = "Index: " + y[x].index + " is " + y[x].text;
+    document.getElementById("minFavLekeplass").innerHTML = "Min Favoritt lekeplass er" + " " + y[x].text;
 
 
     for (var i = 0; i < dataUrl.entries.length; i++) {
@@ -109,21 +87,7 @@ function myFunction(dataUrl) {
 
 
     }
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
 function mapmap() {
     var myLatLng1 = new google.maps.LatLng(lat1, lng1);
     var myLatLng2 = new google.maps.LatLng(lat2, lng2);
@@ -137,49 +101,17 @@ function mapmap() {
     var marker = new google.maps.Marker({
         position: myLatLng1,
         map: map,
-        title: 'Hello World!'
+        title: 'lekeplass'
+
     });
 
     var marker = new google.maps.Marker({
         position: myLatLng2,
         map: map,
-        title: 'Hello World!'
+        title: 'toalett'
+
     });
 }
-
-
-
-
-
-function visFavLeke () {
-
-    document.getElementById('minFavoritt').textContent = localStorage.getItem('name');
-
-}
-
-
-
-
-
-
-
-
-
-
-function velg() {
-
-    localStorage.setItem('name', document.getElementById('Select').value);
-    var selectValue = document.getElementById('Select').value;
-    document.getElementById('minFavLekeplass').innerHTML = "min fav er lekeplass er"+ " " + selectValue;
-
-
-
-}
-
-
-
-
-
 
 function sammen1(dataUrl) {
     var listlat = [];
