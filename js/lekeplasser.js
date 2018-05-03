@@ -2,16 +2,13 @@ var lekeplass = 'https://hotell.difi.no/api/json/bergen/lekeplasser?';
 
 function startLekeplass() {
     hentData(lekeplass, lekeplassListe);
-    hentData( lekeplass,initMap  )
+    hentData(lekeplass, initMap)
 }
 
 function finnlekeplass() {
 
     hentData(lekeplass, finn);
 }
-
-
-
 
 
 function lekeplassListe(data) {
@@ -24,21 +21,21 @@ function lekeplassListe(data) {
     document.getElementById('listeLekeplass').innerHTML = text;
 
 }
+
 // funksjonen som gjør at list lastes in på siden, som tar in en url og en callback funksjon som parameter
 
 
 var searchResults = [];
+
 function finn(dataUrl) {
     searchResults = [];
     check(dataUrl);
 
-    updateLekeplass ();
+    updateLekeplass();
     updateMap();
-
-
 }
 
-function check (dataUrl) {
+function check(dataUrl) {
     var sjekk = document.getElementById('finne');
     var searchObj = {"navn": sjekk.value};
     var searchParam = Object.keys(searchObj);
@@ -54,11 +51,9 @@ function check (dataUrl) {
             searchResults.push(dataUrl.entries[i]);
         }
     }
-
 }
 
-function updateLekeplass () {
-
+function updateLekeplass() {
 
     if (searchResults.length > 0) {
         var text;
@@ -76,16 +71,3 @@ function updateLekeplass () {
 
 }
 
-
-
-function rekne (dataUrl) {
-    var long = document.getElementById()
-
-
-    var a =  dataUrl.entries - x2;
-    var b = y1 - y2;
-
-    var c = Math.sqrt( a*a + b*b );
-
-// c is the distance
-}
