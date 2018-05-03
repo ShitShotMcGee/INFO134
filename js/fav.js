@@ -1,34 +1,52 @@
 var lekeplass = 'https://hotell.difi.no/api/json/bergen/lekeplasser?';
-var dass = 'https://hotell.difi.no/api/json/bergen/dokart?';
+var toalett = 'https://hotell.difi.no/api/json/bergen/dokart?';
 
-function selector(){
-    hentData(lekeplass ,selectCreateor);
+function selectorOption1(){
+    hentData(lekeplass ,selectCreateor1);
 }
 
-function selectCreateor(data) {
+
+
+
+function selector1(){
+    hentData(lekeplass ,velg);
+}
+
+function selector2(){
+    hentData(toalett,sammen);
+}
+
+function selector3(){
+    hentData(toalett,sammen1);
+}
+// lager select/option dropDown
+
+
+function selectCreateor1(data) {
 
     for (var i = 0; i < data.entries.length; i++) {
-        var select = document.getElementById("Select");
+        var select = document.getElementById("Select1");
         var option = document.createElement("option");
         option.text = data.entries[i].navn;
         option.value = data.entries[i].navn;
         select.add(option);
     }
-
-
 }
 
-function selector1(){
-    hentData(lekeplass ,myFunction);
+
+function selectCreateor2(data) {
+
+    for (var i = 0; i < data.entries.length; i++) {
+        var select = document.getElementById("Select2");
+        var option = document.createElement("option");
+        option.text = data.entries[i].plassering;
+        option.value = data.entries[i].plassering;
+        select.add(option);
+    }
 }
 
-function selector2(){
-    hentData(dass,sammen);
-}
 
-function selector3(){
-    hentData(dass,sammen1);
-}
+
 
 
 function sammen(dataUrl) {
@@ -43,13 +61,9 @@ var listl = [];
         var c = Math.sqrt( a*a + b*b );
         listl.push(c);
 
-
     }
 
-
     }
-
-
 
 var lat2 ;
 var lng2 ;
@@ -61,19 +75,16 @@ function visNermeste () {
     selector1();
     selector2();
     mapmap();
-    console.log(lat1);
-    console.log(lng1);
-    console.log(lat2);
-    console.log(lng2);
+
 
 }
 
-function myFunction(dataUrl) {
-
-    var x = document.getElementById("Select").selectedIndex;
-    var y = document.getElementById("Select").options;
+//Legger valgte element i selct/option i "minFavLekeplass" og skriver det ut i html.
+//den sammenligner også lekeplass listen hantet fra web og hva som blir valgt selct/option
+function velg(dataUrl) {
+    var x = document.getElementById("Select1").selectedIndex;
+    var y = document.getElementById("Select1").options;
     document.getElementById("minFavLekeplass").innerHTML = "Min Favoritt lekeplass er" + " " + y[x].text;
-
 
     for (var i = 0; i < dataUrl.entries.length; i++) {
 
@@ -85,16 +96,16 @@ function myFunction(dataUrl) {
 
         }
 
-
     }
 }
+// lager kart til siden.
 function mapmap() {
     var myLatLng1 = new google.maps.LatLng(lat1, lng1);
     var myLatLng2 = new google.maps.LatLng(lat2, lng2);
 
 
     var map = new google.maps.Map(document.getElementById('map1'), {
-        zoom: 4,
+        zoom: 12,
         center: {lat: 60.391011, lng: 5.325950},
     });
 
