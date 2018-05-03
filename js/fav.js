@@ -21,11 +21,9 @@ function selector3(){
 }
 // lager select/option dropDown
 
-
 function selectCreateor1(data) {
-
     for (var i = 0; i < data.entries.length; i++) {
-        var select = document.getElementById("Select1");
+        var select = document.getElementById("Select");
         var option = document.createElement("option");
         option.text = data.entries[i].navn;
         option.value = data.entries[i].navn;
@@ -34,16 +32,6 @@ function selectCreateor1(data) {
 }
 
 
-function selectCreateor2(data) {
-
-    for (var i = 0; i < data.entries.length; i++) {
-        var select = document.getElementById("Select2");
-        var option = document.createElement("option");
-        option.text = data.entries[i].plassering;
-        option.value = data.entries[i].plassering;
-        select.add(option);
-    }
-}
 
 
 
@@ -82,8 +70,8 @@ function visNermeste () {
 //Legger valgte element i selct/option i "minFavLekeplass" og skriver det ut i html.
 //den sammenligner også lekeplass listen hantet fra web og hva som blir valgt selct/option
 function velg(dataUrl) {
-    var x = document.getElementById("Select1").selectedIndex;
-    var y = document.getElementById("Select1").options;
+    var x = document.getElementById("Select").selectedIndex;
+    var y = document.getElementById("Select").options;
     document.getElementById("minFavLekeplass").innerHTML = "Min Favoritt lekeplass er" + " " + y[x].text;
 
     for (var i = 0; i < dataUrl.entries.length; i++) {
@@ -105,7 +93,7 @@ function mapmap() {
 
 
     var map = new google.maps.Map(document.getElementById('map1'), {
-        zoom: 12,
+        zoom: 11,
         center: {lat: 60.391011, lng: 5.325950},
     });
 
@@ -122,29 +110,5 @@ function mapmap() {
         title: 'toalett'
 
     });
-}
-
-function sammen1(dataUrl) {
-    var listlat = [];
-    var listlong =[];
-    var begge = [];
-
-    for (var i = 0; i < dataUrl.entries.length; i++) {
-        lat2 = dataUrl.entries[i].latitude;
-        lng2 = dataUrl.entries[i].longitude;
-
-        var a =  lat2;
-        var b = lng2;
-
-        listlat.push(a);
-        listlong.push(b);
-
-
-    }
-    begge.push(listlat,listlong);
-    console.log(begge);
-
-
-
 }
 
