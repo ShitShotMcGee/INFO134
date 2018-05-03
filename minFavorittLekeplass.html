@@ -10,13 +10,12 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
 </head>
-<body onload="selector(),visNermeste()">
+<body onload="selector(); visNermeste()">
 <div class="wrapper">
     <header class="header">
-        <!--Header laget av NEH006-->
         <h1>Bergen By</h1>
         <nav>
-            <ul>
+            <ul class="navbar">
                 <li><a href="index.html">Startside</a></li>
                 <li><a href="gjøremål.html">Gjøremål</a></li>
                 <li><a href="toalett.html">Toalett</a></li>
@@ -28,17 +27,17 @@
     </header>
 
     <p> her kan du velge din fav lekeplass </p>
-    <select id="Select"  ></select>
-    <button onclick="visNermeste()" > velg fav lekeplass  </button>
-    <button onclick="selector3()" > velg fav   </button>
+    <select id="Select"></select>
+    <button onclick="visNermeste()"> velg fav lekeplass</button>
+    <button onclick="selector3()"> velg fav</button>
 
 
     <p id="minFavLekeplass"></p>
-    <div id="map1"> </div>
+    <div id="map1"></div>
 
-        <footer>
-            <p>Laget av NEH006 og WIZ005</p>
-        </footer>
-    </div>
+    <footer>
+        <p>Laget av kandidat 169 og 257</p>
+    </footer>
+</div>
 </body>
 </html>
