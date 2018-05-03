@@ -7,20 +7,16 @@ function selectorOption1(){
 
 
 
-
+//brukest til å hente data
 function selector1(){
     hentData(lekeplass ,velg);
 }
-
+//brukest til å hente data
 function selector2(){
     hentData(toalett,sammen);
 }
 
-function selector3(){
-    hentData(toalett,sammen1);
-}
 // lager select/option dropDown
-
 function selectCreateor1(data) {
     for (var i = 0; i < data.entries.length; i++) {
         var select = document.getElementById("Select");
@@ -30,11 +26,6 @@ function selectCreateor1(data) {
         select.add(option);
     }
 }
-
-
-
-
-
 
 
 function sammen(dataUrl) {
