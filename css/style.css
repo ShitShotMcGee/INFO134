@@ -374,7 +374,7 @@ footer p {
 /*stop footer*/
 
 /*media query for mobilversjon*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 699px) {
     .header {
         display: flex;
         flex-direction: column;
