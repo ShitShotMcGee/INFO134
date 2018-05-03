@@ -13,7 +13,7 @@
     <header class="header">
         <h1>Bergen By</h1>
         <nav>
-            <ul class="navbar" >
+            <ul class="navbar">
                 <li><a href="index.html">Startside</a></li>
                 <li><a href="gjøremål.html">Gjøremål</a></li>
                 <li><a href="toalett.html">Toaletter</a></li>
@@ -24,11 +24,14 @@
         </nav>
     </header>
 
-    <h3> Her finner du rom oversikt på ulrikkephils hus  </h3>
-
-    <div id="rom"></div>
-    <button onclick="sortNummer()" >  Sorter etter størrelse på rom  </button>
-    <button onclick="startRom()">Sorter etter alfabetisk  </button>
+    <div id="rom_container">
+        <div id="rom_border">
+            <h3>Romoversikt på Ulrike Phils Hus</h3>
+            <div id="rom"></div>
+            <button onclick="sortNummer()"> Sorter etter størrelse</button>
+            <button onclick="startRom()">Sorter alfabetisk</button>
+        </div>
+    </div>
     <footer>
         <p>Laget av kandidat 169 og 257</p>
     </footer>

@@ -331,6 +331,27 @@ body {
 }
 /*stop styling for minFavorittLekeplass.html*/
 
+/*styling ulrikeRom.html*/
+#rom_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#rom_border{
+    border: solid #9A0002;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+#rom_border button{
+    width: 30%;
+}
+/*stop styling ulikeRom.html*/
 
 /*styling for footer som er på alle sidene*/
 footer {
