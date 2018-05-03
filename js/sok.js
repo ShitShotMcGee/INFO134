@@ -166,6 +166,7 @@ function checktimeHverdag(dataUrl) {
         console.log(searchObj);
     }
 }
+//
 
 function checktimeLordag(dataUrl) {
     var aapenLordag = [];
