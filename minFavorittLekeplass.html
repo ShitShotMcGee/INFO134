@@ -9,6 +9,7 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBut1qd8Pyy0GiPO08NQteL0d1Y75-LF5I&callback=initMap">
     </script>
+    <meta name="viewport" content="initial-scale=1.0">
 </head>
 <body onload="selectorOption1();visNermeste()">
 <div class="wrapper">
@@ -16,7 +17,7 @@
         <!--Header laget av NEH006-->
         <h1>Bergen By</h1>
         <nav>
-            <ul>
+            <ul class="navbar">
                 <li><a href="index.html">Startside</a></li>
                 <li><a href="gjøremål.html">Gjøremål</a></li>
                 <li><a href="toalett.html">Toalett</a></li>
@@ -26,19 +27,19 @@
             </ul>
         </nav>
     </header>
-
-    <p> her kan du velge din fav lekeplass </p>
-    <select id="Select"  ></select>
-    <button onclick="selector1()" > velg favoritt lekeplass lekeplass  </button>
-    <button onclick="visNermeste()" > Vis nermeste toalett  </button>
-
-
-    <p id="minFavLekeplass"></p>
-    <div id="map1"> </div>
-
-        <footer>
-            <p>Laget av NEH006 og WIZ005</p>
-        </footer>
+    <div id="favLeke">
+        <div id="favContainer">
+            <h2>Velg din favorittlekeplass</h2>
+            <select id="Select"></select>
+            <button onclick="selector1()"> velg favoritt lekeplass lekeplass</button>
+            <button onclick="visNermeste()"> Vis nermeste toalett</button>
+        </div>
+        <p id="minFavLekeplass"></p>
+        <div id="map1"></div>
     </div>
+    <footer>
+        <p>Laget av NEH006 og WIZ005</p>
+    </footer>
+</div>
 </body>
 </html>
