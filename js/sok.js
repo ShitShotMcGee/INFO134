@@ -31,9 +31,8 @@ function starten() {
 }
 
 function getTimeStart() {
-    hentData(link, checktimeHverdag);
-    hentData(link, checktimeLordag);
-    hentData(link, checktimeSondag);
+    hentData(link, checkTime);
+
 }
 
 var searchResults = [];
@@ -129,8 +128,8 @@ function updateToalett() {
     }
 }
 
-function checktimeHverdag(dataUrl) {
-    var aapenHverdag = [];
+function checkTime(dataUrl) {
+    var aapen = [];
     //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
     var tid = new Date();
     var tidString = tid.toString();
@@ -161,83 +160,52 @@ function checktimeHverdag(dataUrl) {
                 }
             }
         }
-        console.log(aapenHverdag)
-        searchObj.tid_hverdag = lokaltidCombo;
-        console.log(searchObj);
     }
-}
-//
-
-function checktimeLordag(dataUrl) {
-    var aapenLordag = [];
-    //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
-    var tid = new Date();
-    var tidString = tid.toString();
-    var time = tidString.substr(16, 2);
-    var min = tidString.substr(19, 2);
-    var lokaltidCombo = time + min;
-
-    var all = /(ALL)/ig;
-
     if (tid.getDay() === 6) {
         for (i = 0; i < dataUrl.entries.length; i++) {
             if (dataUrl["entries"][i]["tid_lordag"].match(all)) {
-                aapenLordag.push(dataUrl.entries[i]);
+                aapen.push(dataUrl.entries[i]);
             }
             else {
-                var hentTidString = dataUrl.entries[i].tid_lordag;
+                var lorHentTidString = dataUrl.entries[i].tid_hverdag;
 
-                var aapenTime = hentTidString.substr(0, 2);
-                var aapenMin = hentTidString.substr(3, 2);
-                var aapenCombo = aapenTime + aapenMin;
+                var lorAapenTime = lorHentTidString.substr(0, 2);
+                var lorAapenMin = lorHentTidString.substr(3, 2);
+                var lorAapenCombo = lorAapenTime + lorAapenMin;
 
-                var stengTime = hentTidString.substr(8, 2);
-                var stengMin = hentTidString.substr(11, 2);
-                var stengCombo = stengTime + stengMin;
+                var lorStengTime = lorHentTidString.substr(8, 2);
+                var lorStengMin = lorHentTidString.substr(11, 2);
+                var lorStengCombo = lorStengTime + lorStengMin;
 
-                if (aapenCombo < lokaltidCombo && stengCombo > lokaltidCombo) {
-                    aapenLordag.push(dataUrl.entries[i]);
+                if (lorSapenCombo < lokaltidCombo && lorStengCombo > lokaltidCombo) {
+                    aapen.push(dataUrl.entries[i]);
                 }
             }
         }
-        searchObj.aapen = aapenLordag;
     }
-}
-
-function checktimeSondag(dataUrl) {
-    var aapenSondag = [];
-    //henter ut lokaltid, gjør om til string og kombinerer tid og minutt til ett tall
-    var tid = new Date();
-    var tidString = tid.toString();
-    var time = tidString.substr(16, 2);
-    var min = tidString.substr(19, 2);
-    var lokaltidCombo = time + min;
-
-    var all = /(ALL)/ig;
-
-    if (tid.getDay() === 7) {
+    if (tid.getDay() === 0) {
         for (i = 0; i < dataUrl.entries.length; i++) {
             if (dataUrl["entries"][i]["tid_sondag"].match(all)) {
-                aapenSondag.push(dataUrl.entries[i]);
+                aapen.push(dataUrl.entries[i]);
             }
             else {
-                var hentTidString = dataUrl.entries[i].tid_hverdag;
+                var sonHentTidString = dataUrl.entries[i].tid_hverdag;
 
-                var aapenTime = hentTidString.substr(0, 2);
-                var aapenMin = hentTidString.substr(3, 2);
-                var aapenCombo = aapenTime + aapenMin;
+                var sonAapenTime = sonHentTidString.substr(0, 2);
+                var sonAapenMin = sonHentTidString.substr(3, 2);
+                var sonAapenCombo = sonAapenTime + sonAapenMin;
 
-                var stengTime = hentTidString.substr(8, 2);
-                var stengMin = hentTidString.substr(11, 2);
-                var stengCombo = stengTime + stengMin;
+                var sonStengTime = sonHentTidString.substr(8, 2);
+                var sonStengMin = sonHentTidString.substr(11, 2);
+                var sonStengCombo = sonStengTime + sonStengMin;
 
-                if (aapenCombo < lokaltidCombo && stengCombo > lokaltidCombo) {
-                    aapenSondag.push(dataUrl.entries[i]);
+                if (sonAapenCombo < lokaltidCombo && sonStengCombo > lokaltidCombo) {
+                    aapen.push(dataUrl.entries[i]);
                 }
             }
         }
-        searchObj.aapen = aapenSondag;
     }
+    return aapen;
 }
 
 function hurtigsok(dataUrl) {
