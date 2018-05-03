@@ -1,3 +1,4 @@
+/*importerer font fra fonts.google*/
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
 * {
@@ -13,6 +14,7 @@ body {
 
 }
 
+/*CSS for wrapper som ligger rundt alle elementene i body*/
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -21,6 +23,7 @@ body {
 
 }
 
+/*Styling for class header som blir brukt på alle sider*/
 .header {
     display: flex;
     flex-direction: column;
@@ -62,6 +65,9 @@ body {
     background-color: #111;
 }
 
+/*stop header styling*/
+
+/*styling for infoboxelementer i gjøremål.html*/
 .rad {
     display: flex;
     padding-top: 5rem;
@@ -96,6 +102,10 @@ body {
 .flex-text h2 {
     text-align: center;
 }
+
+/*stop gjøremål elementer*/
+
+/*styling for slideshowelementer som ligger i index.html. Bruker funksjon showSlides fra utilites.js*/
 
 #slideshow {
     display: flex;
@@ -134,6 +144,10 @@ body {
     font-size: 3rem;
     text-decoration: underline #9A0002;
 }
+
+/*stop slideShow styling*/
+
+/*styling for søk og kart i toalett.html*/
 
 #mapliste {
     display: flex;
@@ -178,6 +192,17 @@ body {
     margin-bottom: 1%;
 }
 
+#kjaptsøk, #sok {
+    background-color: #A8A89F;
+    color: ivory;
+    border-radius: 5px;
+    border-color: #A8A89F;
+}
+
+#rasktsok, #klokkeslett, #makspris {
+    border-radius: 5px;
+}
+
 #genListe {
     margin: 2%;
     border: solid #9A0002;
@@ -189,35 +214,30 @@ body {
     text-align: center;
 }
 
+#liste {
+    margin: 2%;
+    flex: 2;
+}
+
+/*stop style toalett*/
+
+/*styling for map. Blir brukt i lekeplass.html, toalett.html og minFavorittLekeplass.html*/
 #map {
     margin: 2%;
     width: 75%;
     height: 45rem;
 }
+/*stop map*/
+
 #map1 {
     margin: 2%;
     width: 75%;
     height: 45rem;
 }
 
-#liste {
-    margin: 2%;
-    flex: 2;
-}
-
+/*styling for lekeplass.html*/
 #lekeplassliste {
     display: flex;
-}
-
-#kjaptsøk, #sok {
-    background-color: #A8A89F;
-    color: ivory;
-    border-radius: 5px;
-    border-color: #A8A89F;
-}
-
-#rasktsok, #klokkeslett, #makspris {
-    border-radius: 5px;
 }
 
 #lekeplass {
@@ -242,16 +262,6 @@ body {
     justify-content: center;
 }
 
-#selector {
-    border-bottom: solid #9A0002;
-    padding: 5%;
-}
-
-#selector select {
-    width: 75%;
-    left: 1%;
-}
-
 #finnlekeplass {
 
     align-content: center;
@@ -266,7 +276,20 @@ body {
 #finnlekeplass h3 {
     text-align: center;
 }
+/*stop styling lekeplass*/
 
+#selector {
+    border-bottom: solid #9A0002;
+    padding: 5%;
+}
+
+#selector select {
+    width: 75%;
+    left: 1%;
+}
+
+
+/*Styling for minFavorittLekeplass.html*/
 #favLeke {
     display: flex;
     flex-direction: column;
@@ -304,7 +327,10 @@ body {
 
     margin: 2%;
 }
+/*stop styling for minFavorittLekeplass.html*/
 
+
+/*styling for footer som er på alle sidene*/
 footer {
     display: flex;
     justify-content: center;
@@ -322,7 +348,9 @@ footer p {
     font-size: 3vh;
 
 }
+/*stop footer*/
 
+/*media query for mobilversjon*/
 @media screen and (max-width: 600px) {
     .header {
         display: flex;
